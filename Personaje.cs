@@ -4,10 +4,10 @@ namespace EspacioPersonaje
 {
     public enum Hogwarts
     {
-        Gryffindor=1 ,
-        Hufflepuff=2 ,
-        Ravenclaw=3 ,
-        Slytherin=4 
+        Gryffindor = 1,
+        Hufflepuff = 2,
+        Ravenclaw = 3,
+        Slytherin = 4
     }
 
     public class Personaje
@@ -29,8 +29,8 @@ namespace EspacioPersonaje
         // Constructor que inicializa las propiedades
         public Personaje(Datos datos, Caracteristicas caracteristicas)
         {
-            Datos = datos ?? throw new ArgumentNullException(nameof(datos));
-            Caracteristicas = caracteristicas ?? throw new ArgumentNullException(nameof(caracteristicas));
+            Datos = datos; // Permite que datos y caracteristicas sean nulos
+            Caracteristicas = caracteristicas;
         }
     }
 
@@ -90,21 +90,21 @@ namespace EspacioPersonaje
         public string Tipo
         {
             get => tipo;
-            set => tipo = value ?? throw new ArgumentNullException(nameof(value), "El valor no puede ser nulo");
+            set => tipo = value; // Permite valores nulos
         }
 
         private string nombre;
         public string Nombre
         {
             get => nombre;
-            set => nombre = value ?? throw new ArgumentNullException(nameof(value), "El valor no puede ser nulo");
+            set => nombre = value; // Permite valores nulos
         }
 
         private string apodo;
         public string Apodo
         {
             get => apodo;
-            set => apodo = value ?? throw new ArgumentNullException(nameof(value), "El valor no puede ser nulo");
+            set => apodo = value; // Permite valores nulos
         }
 
         private DateTime fechaNacimiento;

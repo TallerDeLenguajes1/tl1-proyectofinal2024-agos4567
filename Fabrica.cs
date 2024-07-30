@@ -17,7 +17,7 @@ namespace Fabrica
             // Crear datos y características para el personaje
             EspacioPersonaje.Datos datos = new EspacioPersonaje.Datos
             {
-                Tipo = casa.ToString(),
+                Tipo = casa.ToString(), // La casa se representa como una cadena
                 Nombre = nombre,
                 Apodo = ObtenerApodoAleatorio(),
                 FechaNacimiento = GenerarFechaAleatoria()
@@ -28,7 +28,7 @@ namespace Fabrica
             EspacioPersonaje.Caracteristicas caracteristicas = new EspacioPersonaje.Caracteristicas();
             AsignoCaracteristicas(caracteristicas);
 
-            Console.WriteLine($"Nombre: {nombre}, Casa (después del switch): {casa}");
+            // Console.WriteLine($"Nombre: {nombre}, Casa (después del switch): {casa}");
 
             return new EspacioPersonaje.Personaje(datos, caracteristicas);
         }
@@ -40,25 +40,18 @@ namespace Fabrica
                 case "Harry Potter":
                 case "Hermione Granger":
                 case "Ron Weasley":
-                    return AsignarCaracteristicasYDevolverCasa(EspacioPersonaje.Hogwarts.Gryffindor);
+                    return EspacioPersonaje.Hogwarts.Gryffindor;
                 case "Cedric Diggory":
-                    return AsignarCaracteristicasYDevolverCasa(EspacioPersonaje.Hogwarts.Hufflepuff);
+                    return EspacioPersonaje.Hogwarts.Hufflepuff;
                 case "Luna Lovegood":
-                    return AsignarCaracteristicasYDevolverCasa(EspacioPersonaje.Hogwarts.Ravenclaw);
+                    return EspacioPersonaje.Hogwarts.Ravenclaw;
                 case "Draco Malfoy":
                 case "Severus Snape":
                 case "Tom Riddle (Lord Voldemort)":
-                    return AsignarCaracteristicasYDevolverCasa(EspacioPersonaje.Hogwarts.Slytherin);
+                    return EspacioPersonaje.Hogwarts.Slytherin;
                 default:
                     throw new ArgumentException($"Nombre de personaje no válido: {nombre}");
             }
-        }
-
-        private static EspacioPersonaje.Hogwarts AsignarCaracteristicasYDevolverCasa(EspacioPersonaje.Hogwarts casa)
-        {
-            EspacioPersonaje.Caracteristicas caracteristicas = new EspacioPersonaje.Caracteristicas();
-            AsignoCaracteristicas(caracteristicas);
-            return casa;
         }
 
         private static DateTime GenerarFechaAleatoria()
@@ -81,7 +74,7 @@ namespace Fabrica
         private static void AsignoCaracteristicas(EspacioPersonaje.Caracteristicas caracteristicas)
         {
             caracteristicas.Encantamientos = random.Next(20, 71);
-            caracteristicas.Salud = 100;
+            caracteristicas.Salud = 100; // Inicialización de salud
             caracteristicas.Defensa = random.Next(20, 71);
             caracteristicas.Pociones = random.Next(20, 71);
             caracteristicas.Transformaciones = random.Next(20, 71);
@@ -90,7 +83,7 @@ namespace Fabrica
 
         private static string ObtenerApodoAleatorio()
         {
-            string[] apodos = { "El Sabio", "El Valiente", "El Rápido", "El Poderoso", "El Justiciero" };
+            string[] apodos = { "Sabio", "Valiente", "Poderoso", "Justiciero" , "Audaz" , "Noble"};
             return apodos[random.Next(apodos.Length)];
         }
     }
