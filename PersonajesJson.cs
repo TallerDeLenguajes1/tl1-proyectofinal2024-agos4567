@@ -17,7 +17,7 @@ namespace EspacioPersonaje
 
                 // Guardar el JSON en un archivo
                 File.WriteAllText(nombreArchivo, json);
-                Console.WriteLine("Personajes guardados correctamente en el archivo.");
+                // Console.WriteLine("Personajes guardados correctamente en el archivo.");
             }
             catch (Exception ex)
             {
@@ -39,7 +39,7 @@ namespace EspacioPersonaje
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al leer los personajes: {ex.Message}");
+                // Console.WriteLine($"Error al leer los personajes: {ex.Message}");
                 return new List<Personaje>(); // Retorna una lista vacía en caso de error
             }
         }
