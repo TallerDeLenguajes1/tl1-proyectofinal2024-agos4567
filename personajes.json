@@ -1,0 +1,87 @@
+[
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Hermione Granger",
+      "Apodo": "Sabio",
+      "FechaNacimiento": "1968-03-21T00:00:00",
+      "Edad": 56
+    },
+    "Caracteristicas": {
+      "Encantamientos": 56,
+      "Defensa": 65,
+      "Pociones": 47,
+      "Transformaciones": 26,
+      "Adivinacion": 44,
+      "Salud": 100
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Hermione Granger",
+      "Apodo": "Noble",
+      "FechaNacimiento": "1972-08-04T00:00:00",
+      "Edad": 51
+    },
+    "Caracteristicas": {
+      "Encantamientos": 68,
+      "Defensa": 35,
+      "Pociones": 39,
+      "Transformaciones": 46,
+      "Adivinacion": 41,
+      "Salud": 100
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Slytherin",
+      "Nombre": "Tom Riddle (Lord Voldemort)",
+      "Apodo": "Valiente",
+      "FechaNacimiento": "1972-08-02T00:00:00",
+      "Edad": 51
+    },
+    "Caracteristicas": {
+      "Encantamientos": 37,
+      "Defensa": 67,
+      "Pociones": 66,
+      "Transformaciones": 45,
+      "Adivinacion": 37,
+      "Salud": 100
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Hermione Granger",
+      "Apodo": "Valiente",
+      "FechaNacimiento": "1947-03-21T00:00:00",
+      "Edad": 77
+    },
+    "Caracteristicas": {
+      "Encantamientos": 59,
+      "Defensa": 31,
+      "Pociones": 59,
+      "Transformaciones": 56,
+      "Adivinacion": 66,
+      "Salud": 100
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Slytherin",
+      "Nombre": "Severus Snape",
+      "Apodo": "Poderoso",
+      "FechaNacimiento": "1903-06-16T00:00:00",
+      "Edad": 121
+    },
+    "Caracteristicas": {
+      "Encantamientos": 43,
+      "Defensa": 55,
+      "Pociones": 67,
+      "Transformaciones": 38,
+      "Adivinacion": 67,
+      "Salud": 100
+    }
+  }
+]
