@@ -48,6 +48,7 @@ namespace Fabrica
                 case "Draco Malfoy":
                 case "Severus Snape":
                 case "Tom Riddle (Lord Voldemort)":
+                case "Bellatrix Lestrange":
                     return EspacioPersonaje.Hogwarts.Slytherin;
                 default:
                     throw new ArgumentException($"Nombre de personaje no válido: {nombre}");
@@ -73,11 +74,11 @@ namespace Fabrica
 
         private static void AsignoCaracteristicas(EspacioPersonaje.Caracteristicas caracteristicas)
         {
-            caracteristicas.Encantamientos = random.Next(20, 71);
+            caracteristicas.Encantamientos = random.Next(1, 11);
             caracteristicas.Salud = 100; // Inicialización de salud
-            caracteristicas.Defensa = random.Next(20, 71);
-            caracteristicas.Pociones = random.Next(20, 71);
-            caracteristicas.Transformaciones = random.Next(20, 71);
+            caracteristicas.Defensa = random.Next(1, 5);
+            caracteristicas.Pociones = random.Next(1, 11);
+            caracteristicas.Transformaciones = random.Next(1, 11);
             caracteristicas.Adivinacion = random.Next(20, 71);
         }
 

@@ -2,68 +2,68 @@
   {
     "Datos": {
       "Tipo": "Gryffindor",
-      "Nombre": "Hermione Granger",
+      "Nombre": "Harry Potter",
       "Apodo": "Sabio",
-      "FechaNacimiento": "1968-03-21T00:00:00",
-      "Edad": 56
+      "FechaNacimiento": "1969-03-29T00:00:00",
+      "Edad": 55
     },
     "Caracteristicas": {
-      "Encantamientos": 56,
-      "Defensa": 65,
-      "Pociones": 47,
-      "Transformaciones": 26,
-      "Adivinacion": 44,
-      "Salud": 100
-    }
-  },
-  {
-    "Datos": {
-      "Tipo": "Gryffindor",
-      "Nombre": "Hermione Granger",
-      "Apodo": "Noble",
-      "FechaNacimiento": "1972-08-04T00:00:00",
-      "Edad": 51
-    },
-    "Caracteristicas": {
-      "Encantamientos": 68,
-      "Defensa": 35,
-      "Pociones": 39,
-      "Transformaciones": 46,
-      "Adivinacion": 41,
+      "Encantamientos": 6,
+      "Defensa": 2,
+      "Pociones": 9,
+      "Transformaciones": 5,
+      "Adivinacion": 51,
       "Salud": 100
     }
   },
   {
     "Datos": {
       "Tipo": "Slytherin",
-      "Nombre": "Tom Riddle (Lord Voldemort)",
-      "Apodo": "Valiente",
-      "FechaNacimiento": "1972-08-02T00:00:00",
-      "Edad": 51
+      "Nombre": "Bellatrix Lestrange",
+      "Apodo": "Justiciero",
+      "FechaNacimiento": "2018-11-18T00:00:00",
+      "Edad": 5
     },
     "Caracteristicas": {
-      "Encantamientos": 37,
-      "Defensa": 67,
-      "Pociones": 66,
-      "Transformaciones": 45,
-      "Adivinacion": 37,
+      "Encantamientos": 5,
+      "Defensa": 2,
+      "Pociones": 2,
+      "Transformaciones": 10,
+      "Adivinacion": 62,
       "Salud": 100
     }
   },
   {
     "Datos": {
-      "Tipo": "Gryffindor",
-      "Nombre": "Hermione Granger",
-      "Apodo": "Valiente",
-      "FechaNacimiento": "1947-03-21T00:00:00",
-      "Edad": 77
+      "Tipo": "Ravenclaw",
+      "Nombre": "Luna Lovegood",
+      "Apodo": "Noble",
+      "FechaNacimiento": "1981-01-05T00:00:00",
+      "Edad": 43
     },
     "Caracteristicas": {
-      "Encantamientos": 59,
-      "Defensa": 31,
-      "Pociones": 59,
-      "Transformaciones": 56,
-      "Adivinacion": 66,
+      "Encantamientos": 10,
+      "Defensa": 1,
+      "Pociones": 3,
+      "Transformaciones": 6,
+      "Adivinacion": 39,
+      "Salud": 100
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Slytherin",
+      "Nombre": "Bellatrix Lestrange",
+      "Apodo": "Poderoso",
+      "FechaNacimiento": "1934-08-11T00:00:00",
+      "Edad": 89
+    },
+    "Caracteristicas": {
+      "Encantamientos": 5,
+      "Defensa": 3,
+      "Pociones": 2,
+      "Transformaciones": 8,
+      "Adivinacion": 58,
       "Salud": 100
     }
   },
@@ -72,15 +72,15 @@
       "Tipo": "Slytherin",
       "Nombre": "Severus Snape",
       "Apodo": "Poderoso",
-      "FechaNacimiento": "1903-06-16T00:00:00",
-      "Edad": 121
+      "FechaNacimiento": "2014-01-09T00:00:00",
+      "Edad": 10
     },
     "Caracteristicas": {
-      "Encantamientos": 43,
-      "Defensa": 55,
-      "Pociones": 67,
-      "Transformaciones": 38,
-      "Adivinacion": 67,
+      "Encantamientos": 5,
+      "Defensa": 1,
+      "Pociones": 5,
+      "Transformaciones": 8,
+      "Adivinacion": 45,
       "Salud": 100
     }
   }

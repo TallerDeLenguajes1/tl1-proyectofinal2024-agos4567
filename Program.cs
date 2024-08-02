@@ -32,22 +32,36 @@ namespace ProyectoFinal
             List<Personaje> personajesLeidos = PersonajesJson.LeerPersonajes(nombreArchivo);
 
             // Mostrar los detalles de los personajes leídos
-            Console.WriteLine("Personajes leídos:");
+            // Console.WriteLine("Personajes leídos:");
             foreach (var personaje in personajesLeidos)
             {
-                Console.WriteLine($"Casa: {personaje.Datos.Tipo}");
-                Console.WriteLine($"Nombre: {personaje.Datos.Nombre}");
-                Console.WriteLine($"Apodo: {personaje.Datos.Apodo}");
-                Console.WriteLine($"Fecha de Nacimiento: {personaje.Datos.FechaNacimiento.ToShortDateString()}");
-                Console.WriteLine($"Edad: {personaje.Datos.Edad}");
-                Console.WriteLine($"Encantamientos: {personaje.Caracteristicas.Encantamientos}");
-                Console.WriteLine($"Defensa: {personaje.Caracteristicas.Defensa}");
-                Console.WriteLine($"Pociones: {personaje.Caracteristicas.Pociones}");
-                Console.WriteLine($"Transformaciones: {personaje.Caracteristicas.Transformaciones}");
-                Console.WriteLine($"Adivinación: {personaje.Caracteristicas.Adivinacion}");
-                Console.WriteLine($"Salud: {personaje.Caracteristicas.Salud}");
+                // Console.WriteLine($"Casa: {personaje.Datos.Tipo}");
+                // Console.WriteLine($"Nombre: {personaje.Datos.Nombre}");
+                // Console.WriteLine($"Apodo: {personaje.Datos.Apodo}");
+                // Console.WriteLine($"Fecha de Nacimiento: {personaje.Datos.FechaNacimiento.ToShortDateString()}");
+                // Console.WriteLine($"Edad: {personaje.Datos.Edad}");
+                // Console.WriteLine($"Encantamientos: {personaje.Caracteristicas.Encantamientos}");
+                // Console.WriteLine($"Defensa: {personaje.Caracteristicas.Defensa}");
+                // Console.WriteLine($"Pociones: {personaje.Caracteristicas.Pociones}");
+                // Console.WriteLine($"Transformaciones: {personaje.Caracteristicas.Transformaciones}");
+                // Console.WriteLine($"Adivinación: {personaje.Caracteristicas.Adivinacion}");
+                // Console.WriteLine($"Salud: {personaje.Caracteristicas.Salud}");
                 Console.WriteLine();
             }
+
+            // Seleccionar dos personajes aleatorios que no sean el mismo
+            Random random = new Random();
+            Personaje personaje1 = personajesLeidos[random.Next(personajesLeidos.Count)];
+            Personaje personaje2;
+
+            do
+            {
+                personaje2 = personajesLeidos[random.Next(personajesLeidos.Count)];
+            } while (personaje2 == personaje1);
+
+            // Iniciar el combate
+            Combate combate = new Combate(personaje1, personaje2);
+            combate.IniciarCombate();
 
             Console.ReadLine();  // Espera a que el usuario presione Enter antes de salir
         }
