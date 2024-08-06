@@ -2,39 +2,53 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using EspacioPersonaje;
 
-namespace EspacioPersonaje
+public static class HistorialJson
 {
-    public class HistorialJson
+    // Método para guardar el ganador en un archivo JSON
+    public static void GuardarGanador(Personaje ganador, string nombreArchivo)
     {
-        // GuardarGanador: Guarda el personaje ganador y la información relevante en un archivo JSON
-        // public static void GuardarGanador(Personaje ganador, string nombreArchivo)
-        // {
-        //     var ganadores = LeerGanadores(nombreArchivo) ?? new List<Personaje>();
+        try
+        {
+            List<Personaje> ganadores = new List<Personaje>();
 
-        //     ganadores.Add(ganador);
+            if (Existe(nombreArchivo))
+            {
+                ganadores = LeerGanadores(nombreArchivo);
+            }
 
-        //     // Serializar la lista de ganadores en JSON y guardar en archivo
-        //     var opciones = new JsonSerializerOptions { WriteIndented = true };
-        //     string jsonString = JsonSerializer.Serialize(ganadores, opciones);
-        //     File.WriteAllText(nombreArchivo, jsonString);
-        // }
+            ganadores.Add(ganador);
 
-        // // LeerGanadores: Lee el archivo JSON y retorna la lista de personajes ganadores
-        // public static List<Personaje> LeerGanadores(string nombreArchivo)
-        // {
-        //     if (!File.Exists(nombreArchivo) || new FileInfo(nombreArchivo).Length == 0)
-        //         return new List<Personaje>();
+            string json = JsonSerializer.Serialize(ganadores, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(nombreArchivo, json);
 
-        //     // Leer el archivo JSON y deserializar en una lista de personajes
-        //     string jsonString = File.ReadAllText(nombreArchivo);
-        //     return JsonSerializer.Deserialize<List<Personaje>>(jsonString);
-        // }
+            Console.WriteLine("Ganador guardado correctamente en el archivo.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al guardar el ganador: {ex.Message}");
+        }
+    }
 
-        // // Existe: Verifica si el archivo existe y contiene datos
-        // public static bool Existe(string nombreArchivo)
-        // {
-        //     return File.Exists(nombreArchivo) && new FileInfo(nombreArchivo).Length > 0;
-        // }
+    // Método para leer los ganadores desde un archivo JSON
+    public static List<Personaje> LeerGanadores(string nombreArchivo)
+    {
+        try
+        {
+            string json = File.ReadAllText(nombreArchivo);
+            return JsonSerializer.Deserialize<List<Personaje>>(json);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al leer los ganadores: {ex.Message}");
+            return new List<Personaje>();
+        }
+    }
+
+    // Método para verificar si el archivo existe y tiene datos
+    public static bool Existe(string nombreArchivo)
+    {
+        return File.Exists(nombreArchivo) && new FileInfo(nombreArchivo).Length > 0;
     }
 }
