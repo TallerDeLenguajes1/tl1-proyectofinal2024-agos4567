@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using EspacioPersonaje;
+using Fabrica;
 
 namespace ProyectoFinal
 {
@@ -17,20 +19,40 @@ namespace ProyectoFinal
 
         public Personaje IniciarCombate()
         {
-            Console.WriteLine("===== ¡Comienza el Combate! =====\n");
+            // Espacio adicional antes del nuevo combate
+            Console.Clear();
+            Console.WriteLine();
+
+            // Anuncio de comienzo del combate
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("══════════════════════════════════════════════");
+            Console.WriteLine("          ¡¡¡¡ COMIENZA EL COMBATE !!!!");
+            Console.WriteLine("══════════════════════════════════════════════\n");
+            Console.ResetColor();
 
             MostrarDetallesPersonajes();
 
-            string[] caracteristicas = { "Encantamientos", "Defensa", "Pociones", "Transformaciones", "Adivinacion" };
             int turno = 0;
 
             while (personaje1.Caracteristicas.Salud > 0 && personaje2.Caracteristicas.Salud > 0)
             {
-                string caracteristicaActual = caracteristicas[turno % caracteristicas.Length];
-                RealizarTurno(personaje1, personaje2, caracteristicaActual);
-                if (personaje2.Caracteristicas.Salud <= 0) break;
+                // Alternar entre ataque y defensa en cada turno
+                if (turno % 2 == 0)
+                {
+                    // Colores alternos para los turnos
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    RealizarTurno(personaje1, personaje2);
+                    Console.ResetColor();
+                    if (personaje2.Caracteristicas.Salud <= 0) break;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    RealizarTurno(personaje2, personaje1);
+                    Console.ResetColor();
+                    if (personaje1.Caracteristicas.Salud <= 0) break;
+                }
 
-                RealizarTurno(personaje2, personaje1, caracteristicaActual);
                 turno++;
 
                 // Esperar a que se presione una tecla antes de continuar con el siguiente ataque
@@ -41,73 +63,102 @@ namespace ProyectoFinal
             Personaje ganador = personaje1.Caracteristicas.Salud > 0 ? personaje1 : personaje2;
             MejorarHabilidades(ganador);
 
-            Console.WriteLine("\n===== ¡Combate Finalizado! =====");
-            Console.WriteLine($"¡El ganador es: {ganador.Datos.Nombre}!\n");
+            // Anuncio del ganador
+            Console.Clear();
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("══════════════════════════════════════════════");
+            Console.WriteLine("        ¡¡¡¡ COMBATE FINALIZADO !!!!");
+            Console.WriteLine($"       ¡¡ El ganador es: {ganador.Datos.Nombre} !!");
+            Console.WriteLine("══════════════════════════════════════════════");
+            Console.ResetColor();
 
             return ganador;
         }
 
         private void MostrarDetallesPersonajes()
         {
-            Console.WriteLine("Detalles de los personajes:");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Estadísticas de los personajes:");
+            Console.ResetColor();
+
+            // Mostrar detalles de personaje 1
+            Console.WriteLine("╔════════════════════════════════╗");
             MostrarDetallesPersonaje(personaje1);
-            Console.WriteLine($"VS");
+            Console.WriteLine("╚════════════════════════════════╝");
+
+            // Espacio adicional antes del separador VS
+            Console.WriteLine();
+
+            // VS Separator
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("            VS                       ");
+            Console.ResetColor();
+
+            // Espacio adicional después del separador VS
+            Console.WriteLine();
+
+            // Mostrar detalles de personaje 2
+            Console.WriteLine("╔════════════════════════════════╗");
             MostrarDetallesPersonaje(personaje2);
+            Console.WriteLine("╚════════════════════════════════╝");
             Console.WriteLine();
         }
 
         private void MostrarDetallesPersonaje(Personaje personaje)
         {
             Console.WriteLine($"{personaje.Datos.Nombre} (Salud: {personaje.Caracteristicas.Salud})");
-            Console.WriteLine($"  Encantamientos: {personaje.Caracteristicas.Encantamientos}");
-            Console.WriteLine($"  Defensa: {personaje.Caracteristicas.Defensa}");
             Console.WriteLine($"  Pociones: {personaje.Caracteristicas.Pociones}");
-            Console.WriteLine($"  Transformaciones: {personaje.Caracteristicas.Transformaciones}");
-            Console.WriteLine($"  Adivinación: {personaje.Caracteristicas.Adivinacion}");
+            Console.WriteLine($"  Defensa: {personaje.Caracteristicas.Defensa}");
+            Console.WriteLine($"  Hechizos: {personaje.Caracteristicas.Hechizos}");
+            Console.WriteLine($"  Nivel de Conocimiento Mágico: {personaje.Caracteristicas.Nivel}");
+            Console.WriteLine($"  Transfiguraciones: {personaje.Caracteristicas.Transformaciones}");
         }
 
-        private void RealizarTurno(Personaje atacante, Personaje defensor, string caracteristica)
+        private void RealizarTurno(Personaje atacante, Personaje defensor)
         {
-            int habilidadAtacante = ObtenerValorCaracteristica(atacante, caracteristica);
-            int habilidadDefensor = ObtenerValorCaracteristica(defensor, caracteristica);
+            // Cálculo del Ataque
+            int ataque = atacante.Caracteristicas.Pociones * atacante.Caracteristicas.Hechizos * atacante.Caracteristicas.Nivel;
 
-            int danioBase = random.Next(10, 21);
-            int danioModificado = danioBase + (habilidadAtacante / 10) - (habilidadDefensor / 10);
+            // Cálculo de la Efectividad
+            int efectividad = random.Next(1, 101); // Valor aleatorio entre 1 y 100
 
-            // Asegurarse de que el daño esté entre 5 y 20
-            int danioFinal = Math.Max(5, Math.Min(20, danioModificado));
+            // Cálculo del Escudo (Defensa)
+            int escudo = defensor.Caracteristicas.Defensa * defensor.Caracteristicas.Hechizos;
 
-            defensor.Caracteristicas.Salud -= danioFinal;
+            // Constante de Ajuste
+            const int constanteAjuste = 500;
 
-            Console.WriteLine($"--> {atacante.Datos.Nombre} ataca a {defensor.Datos.Nombre} usando {caracteristica} ({habilidadAtacante})");
-            Console.WriteLine($"    Causa {danioFinal} de daño. Salud restante de {defensor.Datos.Nombre}: {defensor.Caracteristicas.Salud}");
-        }
+            // Cálculo del Daño Provocado
+            int danoProvocado = (ataque * efectividad - escudo) / constanteAjuste;
 
-        private int ObtenerValorCaracteristica(Personaje personaje, string caracteristica)
-        {
-            switch (caracteristica)
-            {
-                case "Encantamientos":
-                    return personaje.Caracteristicas.Encantamientos;
-                case "Defensa":
-                    return personaje.Caracteristicas.Defensa;
-                case "Pociones":
-                    return personaje.Caracteristicas.Pociones;
-                case "Transformaciones":
-                    return personaje.Caracteristicas.Transformaciones;
-                case "Adivinacion":
-                    return personaje.Caracteristicas.Adivinacion;
-                default:
-                    throw new ArgumentException($"Característica no válida: {caracteristica}");
-            }
+            // Asegúrate de que el daño sea al menos 2, ya que la constante de ajuste es muy grande y muchas veces solo me da 0 de daño 
+            int MindanoProvocado = Math.Max(2, danoProvocado);
+
+            // Actualizar la salud del defensor
+            defensor.Caracteristicas.Salud -= MindanoProvocado;
+
+            // Mostrar el ataque
+            Console.WriteLine($"{atacante.Datos.Nombre} ataca a {defensor.Datos.Nombre} causando {MindanoProvocado} de daño.");
+            Console.WriteLine($"*** Ataque {ataque} y Efectividad {efectividad} ***");
+            Console.WriteLine($"    Causa {MindanoProvocado} de daño. Salud restante de {defensor.Datos.Nombre}: {defensor.Caracteristicas.Salud}");
+
+            // Calcular el daño que el defensor causa al atacante (opcional)
+            // int danoContraAtacante = defensor.Caracteristicas.Defensa * defensor.Caracteristicas.Hechizos / 20; // Ajusta según tu lógica
+
+            // Mostrar la preparación del defensor para el siguiente ataque
+            Console.WriteLine($"{defensor.Datos.Nombre} se prepara...");
         }
 
         private void MejorarHabilidades(Personaje ganador)
         {
             ganador.Caracteristicas.Salud += 10;
             ganador.Caracteristicas.Defensa += 5;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"¡{ganador.Datos.Nombre} ha ganado y mejora sus habilidades!");
             Console.WriteLine($"Salud: {ganador.Caracteristicas.Salud} (+10), Defensa: {ganador.Caracteristicas.Defensa} (+5)\n");
+            Console.ResetColor();
         }
     }
 }

@@ -1,90 +1,110 @@
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Fabrica
 {
     public class FabricaDePersonajes
     {
-        private static Random random = new Random();
+        private static readonly Random random = new Random();
+        private static readonly PotterApi potterApi = new PotterApi();
 
-        public static EspacioPersonaje.Personaje CrearPersonajeAleatorio()
+        // Método para obtener los primeros 10 personajes desde la API
+        public static async Task<List<Character>> ObtenerPersonajesDesdeApi()
         {
-            string[] nombres = { "Harry Potter", "Hermione Granger", "Ron Weasley", "Draco Malfoy", "Severus Snape", "Tom Riddle (Lord Voldemort)", "Bellatrix Lestrange", "Luna Lovegood", "Cedric Diggory" };
-            string nombre = nombres[random.Next(nombres.Length)].Trim(); // Trim para eliminar espacios en blanco
+            string url = "https://hp-api.onrender.com/api/characters/students";
+            List<Character> personajesApi = await potterApi.ObtenerPersonajesAsync(url);
 
-            // Determinación de la casa y asignación de características según el nombre seleccionado
-            EspacioPersonaje.Hogwarts casa = DeterminarCasaYCaracteristicas(nombre);
+            // Obtener los primeros 10 personajes
+            var primeros10Personajes = personajesApi.Take(10).ToList();
 
-            // Crear datos y características para el personaje
-            EspacioPersonaje.Datos datos = new EspacioPersonaje.Datos
+            // Asignar una fecha aleatoria a los personajes que no tienen fecha de nacimiento
+            foreach (var personaje in primeros10Personajes)
             {
-                Tipo = casa.ToString(), // La casa se representa como una cadena
-                Nombre = nombre,
-                Apodo = ObtenerApodoAleatorio(),
-                FechaNacimiento = GenerarFechaAleatoria()
-            };
-
-            datos.Edad = CalcularEdad(datos.FechaNacimiento);
-
-            EspacioPersonaje.Caracteristicas caracteristicas = new EspacioPersonaje.Caracteristicas();
-            AsignoCaracteristicas(caracteristicas);
-
-            // Console.WriteLine($"Nombre: {nombre}, Casa (después del switch): {casa}");
-
-            return new EspacioPersonaje.Personaje(datos, caracteristicas);
-        }
-
-        private static EspacioPersonaje.Hogwarts DeterminarCasaYCaracteristicas(string nombre)
-        {
-            switch (nombre)
-            {
-                case "Harry Potter":
-                case "Hermione Granger":
-                case "Ron Weasley":
-                    return EspacioPersonaje.Hogwarts.Gryffindor;
-                case "Cedric Diggory":
-                    return EspacioPersonaje.Hogwarts.Hufflepuff;
-                case "Luna Lovegood":
-                    return EspacioPersonaje.Hogwarts.Ravenclaw;
-                case "Draco Malfoy":
-                case "Severus Snape":
-                case "Tom Riddle (Lord Voldemort)":
-                case "Bellatrix Lestrange":
-                    return EspacioPersonaje.Hogwarts.Slytherin;
-                default:
-                    throw new ArgumentException($"Nombre de personaje no válido: {nombre}");
+                if (string.IsNullOrEmpty(personaje.DateOfBirth))
+                {
+                    personaje.DateOfBirth = ObtenerFechaAleatoria().ToString("dd-MM-yyyy");
+                }
             }
+
+            return primeros10Personajes;
         }
 
-        private static DateTime GenerarFechaAleatoria()
-        {
-            DateTime inicio = new DateTime(1900, 1, 1);
-            int rango = (DateTime.Today - inicio).Days;
-            return inicio.AddDays(random.Next(rango));
-        }
 
-        private static int CalcularEdad(DateTime fechaNacimiento)
+        // Método para convertir personajes de la API a objetos Personaje
+       //
+
+        public static List<EspacioPersonaje.Personaje> ConvertirAReturnPersonajes(List<Character> characterPersonajes)
         {
-            int edad = DateTime.Today.Year - fechaNacimiento.Year;
-            if (fechaNacimiento.Date > DateTime.Today.AddYears(-edad))
+            var personajes = new List<EspacioPersonaje.Personaje>();
+
+            foreach (var p in characterPersonajes)
             {
-                edad--;
+                if (!DateTime.TryParse(p.DateOfBirth, out DateTime fechaNacimiento))
+                {
+                    fechaNacimiento = DateTime.MinValue;
+                }
+
+                var datos = new EspacioPersonaje.Datos
+                {
+                    Tipo = p.House,
+                    Nombre = p.Name,
+                    Apodo = ObtenerApodoAleatorio(),
+                    FechaNacimiento = fechaNacimiento,
+                    Gender = p.Gender,
+                    Ancestry = p.Ancestry,
+                    Imagen = p.Image
+                };
+
+                var caracteristicas = CrearCaracteristicasAleatorias();
+
+                personajes.Add(new EspacioPersonaje.Personaje(datos, caracteristicas));
             }
-            return edad;
+
+            return personajes;
         }
 
-        private static void AsignoCaracteristicas(EspacioPersonaje.Caracteristicas caracteristicas)
+        private static DateTime ObtenerFechaAleatoria()
         {
-            caracteristicas.Encantamientos = random.Next(1, 11);
-            caracteristicas.Salud = 100; // Inicialización de salud
-            caracteristicas.Defensa = random.Next(1, 5);
-            caracteristicas.Pociones = random.Next(1, 11);
-            caracteristicas.Transformaciones = random.Next(1, 11);
-            caracteristicas.Adivinacion = random.Next(20, 71);
+            int year = random.Next(1980, 2010);
+            int month = random.Next(1, 13);
+            int day = random.Next(1, DateTime.DaysInMonth(year, month) + 1);
+
+            return new DateTime(year, month, day);
         }
+
+        // private static EspacioPersonaje.Caracteristicas CrearCaracteristicasAleatorias()
+        // {
+        //     return new EspacioPersonaje.Caracteristicas
+        //     {
+        //         Encantamientos = random.Next(1, 11),
+        //         Salud = 100,
+        //         Defensa = random.Next(1, 5),
+        //         Pociones = random.Next(1, 11),
+        //         Transformaciones = random.Next(1, 11),
+        //         Adivinacion = random.Next(20, 71)
+        //     };
+        // }
+
+
+    private static EspacioPersonaje.Caracteristicas CrearCaracteristicasAleatorias()
+{
+    return new EspacioPersonaje.Caracteristicas
+    {
+        Pociones = random.Next(1, 6),
+        Defensa = random.Next(1, 11),
+        Hechizos = random.Next(1, 11),
+        Nivel = random.Next(1, 11),
+        Transformaciones = random.Next(1, 11),
+        Salud = 100
+    };
+}
+
+
 
         private static string ObtenerApodoAleatorio()
         {
-            string[] apodos = { "Sabio", "Valiente", "Poderoso", "Justiciero" , "Audaz" , "Noble"};
+            string[] apodos = { "Sabio", "Valiente", "Poderoso", "Justiciero", "Audaz", "Noble" };
             return apodos[random.Next(apodos.Length)];
         }
     }

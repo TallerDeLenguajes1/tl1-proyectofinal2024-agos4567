@@ -1,69 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
-using EspacioPersonaje;
+using System.Threading.Tasks;
 using Fabrica;
+using EspacioPersonaje;
 
 namespace ProyectoFinal
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            // Crear una lista de personajes
-            List<Personaje> personajes = new List<Personaje>();
+            // Obtener la lista de personajes desde la API
+            List<Character> personajesApi = await FabricaDePersonajes.ObtenerPersonajesDesdeApi();
 
-            // Añadir personajes aleatorios a la lista
-            for (int i = 0; i < 5; i++)
+            // Convertir los personajes de la API a objetos Personaje
+            List<EspacioPersonaje.Personaje> personajes = FabricaDePersonajes.ConvertirAReturnPersonajes(personajesApi);
+
+            // Mostrar los personajes (opcional)
+            Console.WriteLine("Personajes creados:");
+            MostrarPersonajes(personajes);
+
+            // Guardar personajes en un archivo JSON
+            string rutaArchivo = "personajes.json";
+            PersonajesJson.GuardarPersonajes(personajes, rutaArchivo);
+
+            // Verificar si el archivo fue creado y leer los personajes del archivo
+            if (PersonajesJson.ExisteArchivo(rutaArchivo))
             {
-                personajes.Add(FabricaDePersonajes.CrearPersonajeAleatorio());
+                List<Personaje> personajesLeidos = PersonajesJson.LeerPersonajes(rutaArchivo);
+                Console.WriteLine("Personajes leídos del archivo:");
+                MostrarPersonajes(personajesLeidos);
+            }
+            else
+            {
+                Console.WriteLine("No se encontró el archivo de personajes.");
             }
 
-            // Definir el nombre del archivo JSON
-            string nombreArchivo = "personajes.json";
-
-            // Guardar los personajes en un archivo JSON
-            PersonajesJson.GuardarPersonajes(personajes, nombreArchivo);
-
-            // Verificar si el archivo JSON existe y tiene datos
-            bool archivoExiste = PersonajesJson.Existe(nombreArchivo);
-            Console.WriteLine($"¿El archivo existe y tiene datos? {archivoExiste}");
-
-            // Leer los personajes desde el archivo JSON
-            List<Personaje> personajesLeidos = PersonajesJson.LeerPersonajes(nombreArchivo);
-
-            // Mostrar los detalles de los personajes leídos
-            // Console.WriteLine("Personajes leídos:");
-            foreach (var personaje in personajesLeidos)
+            // Verificar que haya al menos dos personajes para realizar un combate
+            if (personajes.Count >= 2)
             {
-                // Console.WriteLine($"Casa: {personaje.Datos.Tipo}");
-                // Console.WriteLine($"Nombre: {personaje.Datos.Nombre}");
-                // Console.WriteLine($"Apodo: {personaje.Datos.Apodo}");
-                // Console.WriteLine($"Fecha de Nacimiento: {personaje.Datos.FechaNacimiento.ToShortDateString()}");
-                // Console.WriteLine($"Edad: {personaje.Datos.Edad}");
-                // Console.WriteLine($"Encantamientos: {personaje.Caracteristicas.Encantamientos}");
-                // Console.WriteLine($"Defensa: {personaje.Caracteristicas.Defensa}");
-                // Console.WriteLine($"Pociones: {personaje.Caracteristicas.Pociones}");
-                // Console.WriteLine($"Transformaciones: {personaje.Caracteristicas.Transformaciones}");
-                // Console.WriteLine($"Adivinación: {personaje.Caracteristicas.Adivinacion}");
-                // Console.WriteLine($"Salud: {personaje.Caracteristicas.Salud}");
-                Console.WriteLine();
+                // Seleccionar dos personajes aleatorios que no sean el mismo
+                Random random = new Random();
+                Personaje personaje1 = personajes[random.Next(personajes.Count)];
+                Personaje personaje2;
+
+                do
+                {
+                    personaje2 = personajes[random.Next(personajes.Count)];
+                } while (personaje2 == personaje1);
+
+                // Iniciar el combate
+                Combate combate = new Combate(personaje1, personaje2);
+                combate.IniciarCombate();
             }
-
-            // Seleccionar dos personajes aleatorios que no sean el mismo
-            Random random = new Random();
-            Personaje personaje1 = personajesLeidos[random.Next(personajesLeidos.Count)];
-            Personaje personaje2;
-
-            do
+            else
             {
-                personaje2 = personajesLeidos[random.Next(personajesLeidos.Count)];
-            } while (personaje2 == personaje1);
-
-            // Iniciar el combate
-            Combate combate = new Combate(personaje1, personaje2);
-            combate.IniciarCombate();
+                Console.WriteLine("No hay suficientes personajes para realizar un combate.");
+            }
 
             Console.ReadLine();  // Espera a que el usuario presione Enter antes de salir
+        }
+
+        static void MostrarPersonajes(List<EspacioPersonaje.Personaje> personajes)
+        {
+            foreach (var personaje in personajes)
+            {
+                Console.WriteLine($"Casa: {personaje.Datos.Tipo}");
+                Console.WriteLine($"Nombre: {personaje.Datos.Nombre}");
+                Console.WriteLine($"Apodo: {personaje.Datos.Apodo}");
+                Console.WriteLine($"Fecha de Nacimiento: {personaje.Datos.FechaNacimiento:dd-MM-yyyy}");
+                Console.WriteLine($"Género: {personaje.Datos.Gender}");
+                Console.WriteLine($"Ancestry: {personaje.Datos.Ancestry}");
+                Console.WriteLine($"Imagen: {personaje.Datos.Imagen}");
+                Console.WriteLine();
+            }
         }
     }
 }

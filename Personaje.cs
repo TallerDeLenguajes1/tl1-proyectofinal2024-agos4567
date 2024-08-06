@@ -29,18 +29,20 @@ namespace EspacioPersonaje
         // Constructor que inicializa las propiedades
         public Personaje(Datos datos, Caracteristicas caracteristicas)
         {
-            Datos = datos; // Permite que datos y caracteristicas sean nulos
-            Caracteristicas = caracteristicas;
+            Datos = datos ?? throw new ArgumentNullException(nameof(datos)); // Lanza excepción si datos es nulo
+            Caracteristicas = caracteristicas ?? throw new ArgumentNullException(nameof(caracteristicas)); // Lanza excepción si caracteristicas es nulo
+        //      Datos = datos; // Lanza excepción si datos es nulo
+        //     Caracteristicas = caracteristicas ; // Lanza excepción si caracteristicas es nulo
         }
     }
 
     public class Caracteristicas
     {
-        private int encantamientos;
-        public int Encantamientos
+        private int pociones;
+        public int Pociones
         {
-            get => encantamientos;
-            set => encantamientos = value;
+            get => pociones;
+            set => pociones = value;
         }
 
         private int defensa;
@@ -50,11 +52,18 @@ namespace EspacioPersonaje
             set => defensa = value;
         }
 
-        private int pociones;
-        public int Pociones
+        private int hechizos;
+        public int Hechizos
         {
-            get => pociones;
-            set => pociones = value;
+            get => hechizos;
+            set => hechizos = value;
+        }
+
+        private int nivel;
+        public int Nivel
+        {
+            get => nivel;
+            set => nivel = value;
         }
 
         private int transformaciones;
@@ -64,24 +73,12 @@ namespace EspacioPersonaje
             set => transformaciones = value;
         }
 
-        private int adivinacion;
-        public int Adivinacion
-        {
-            get => adivinacion;
-            set => adivinacion = value;
-        }
-
         private int salud; // Cambiado a privado
         public int Salud
         {
             get => salud;
             set => salud = value;
         }
-
-        // Propiedades adicionales según el contexto
-        // public int Agilidad { get; set; }
-        // public int Resistencia { get; set; }
-        // public int Energia { get; set; }
     }
 
     public class Datos
@@ -119,6 +116,27 @@ namespace EspacioPersonaje
         {
             get => edad;
             set => edad = value;
+        }
+
+        private string gender;
+        public string Gender
+        {
+            get => gender;
+            set => gender = value; // Permite valores nulos
+        }
+
+        private string ancestry;
+        public string Ancestry
+        {
+            get => ancestry;
+            set => ancestry = value; // Permite valores nulos
+        }
+
+        private string imagen;
+        public string Imagen
+        {
+            get => imagen;
+            set => imagen = value; // Permite valores nulos
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EspacioPersonaje;
 using Fabrica;
 
@@ -7,31 +8,60 @@ namespace ProyectoFinal
 {
     public class Gameplay
     {
-        public static void IniciarJuego()
+        public static async Task IniciarJuego()
         {
-            // Crear una lista de personajes
-            List<Personaje> personajes = new List<Personaje>();
+            // Obtener la lista de personajes desde la API
+            List<Character> personajesApi = await FabricaDePersonajes.ObtenerPersonajesDesdeApi();
 
-            // Añadir personajes aleatorios a la lista
-            for (int i = 0; i < 5; i++)
-            {
-                personajes.Add(FabricaDePersonajes.CrearPersonajeAleatorio());
-            }
+            // Convertir los personajes de la API a objetos Personaje
+            List<Personaje> personajes = FabricaDePersonajes.ConvertirAReturnPersonajes(personajesApi);
 
-            // Simular un combate entre dos personajes
+            // Mostrar los personajes
+            Console.WriteLine("Personajes creados:");
+            MostrarPersonajes(personajes);
+
+            // Verificar que hay al menos 2 personajes para el combate
             if (personajes.Count >= 2)
             {
-                Personaje p1 = personajes[0];
-                Personaje p2 = personajes[1];
+                Random random = new Random();
+                
+                // Seleccionar dos personajes aleatorios (que no se repitan)
+                Personaje personaje1 = personajes[random.Next(personajes.Count)];
+                Personaje personaje2;
 
-                Combate combate = new Combate(p1, p2);
+                do
+                {
+                    personaje2 = personajes[random.Next(personajes.Count)];
+                } while (personaje2 == personaje1);
+
+                // Iniciar el combate
+                Combate combate = new Combate(personaje1, personaje2);
                 Personaje ganador = combate.IniciarCombate();
 
                 // Mostrar los detalles del ganador
                 Console.WriteLine($"Ganador: {ganador.Datos.Nombre}");
             }
+            else
+            {
+                Console.WriteLine("No hay suficientes personajes para iniciar el combate.");
+            }
 
             Console.ReadLine();  // Espera a que el usuario presione Enter antes de salir
+        }
+
+        private static void MostrarPersonajes(List<Personaje> personajes)
+        {
+            foreach (var personaje in personajes)
+            {
+                Console.WriteLine($"Casa: {personaje.Datos.Tipo}");
+                Console.WriteLine($"Nombre: {personaje.Datos.Nombre}");
+                Console.WriteLine($"Apodo: {personaje.Datos.Apodo}");
+                Console.WriteLine($"Fecha de Nacimiento: {personaje.Datos.FechaNacimiento.ToString("dd-MM-yyyy")}");
+                Console.WriteLine($"Género: {personaje.Datos.Gender}");
+                Console.WriteLine($"Ancestry: {personaje.Datos.Ancestry}");
+                Console.WriteLine($"Imagen: {personaje.Datos.Imagen}");
+                Console.WriteLine();
+            }
         }
     }
 }
