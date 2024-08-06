@@ -3,7 +3,7 @@
     "Datos": {
       "Tipo": "Gryffindor",
       "Nombre": "Harry Potter",
-      "Apodo": "Valiente",
+      "Apodo": "Noble",
       "FechaNacimiento": "1980-07-31T00:00:00",
       "Edad": 0,
       "Gender": "male",
@@ -11,11 +11,11 @@
       "Imagen": "https://ik.imagekit.io/hpapi/harry.jpg"
     },
     "Caracteristicas": {
-      "Pociones": 3,
-      "Defensa": 4,
+      "Pociones": 4,
+      "Defensa": 7,
       "Hechizos": 4,
-      "Nivel": 2,
-      "Transformaciones": 8,
+      "Nivel": 8,
+      "Transformaciones": 6,
       "Salud": 100
     }
   },
@@ -23,7 +23,7 @@
     "Datos": {
       "Tipo": "Gryffindor",
       "Nombre": "Hermione Granger",
-      "Apodo": "Noble",
+      "Apodo": "Sabio",
       "FechaNacimiento": "1979-09-19T00:00:00",
       "Edad": 0,
       "Gender": "female",
@@ -31,11 +31,11 @@
       "Imagen": "https://ik.imagekit.io/hpapi/hermione.jpeg"
     },
     "Caracteristicas": {
-      "Pociones": 1,
-      "Defensa": 7,
-      "Hechizos": 1,
-      "Nivel": 7,
-      "Transformaciones": 3,
+      "Pociones": 5,
+      "Defensa": 2,
+      "Hechizos": 7,
+      "Nivel": 9,
+      "Transformaciones": 4,
       "Salud": 100
     }
   },
@@ -43,7 +43,7 @@
     "Datos": {
       "Tipo": "Gryffindor",
       "Nombre": "Ron Weasley",
-      "Apodo": "Valiente",
+      "Apodo": "Noble",
       "FechaNacimiento": "1980-03-01T00:00:00",
       "Edad": 0,
       "Gender": "male",
@@ -51,11 +51,11 @@
       "Imagen": "https://ik.imagekit.io/hpapi/ron.jpg"
     },
     "Caracteristicas": {
-      "Pociones": 1,
-      "Defensa": 4,
-      "Hechizos": 8,
-      "Nivel": 10,
-      "Transformaciones": 10,
+      "Pociones": 4,
+      "Defensa": 2,
+      "Hechizos": 6,
+      "Nivel": 3,
+      "Transformaciones": 1,
       "Salud": 100
     }
   },
@@ -63,7 +63,7 @@
     "Datos": {
       "Tipo": "Slytherin",
       "Nombre": "Draco Malfoy",
-      "Apodo": "Poderoso",
+      "Apodo": "Audaz",
       "FechaNacimiento": "1980-06-05T00:00:00",
       "Edad": 0,
       "Gender": "male",
@@ -71,11 +71,11 @@
       "Imagen": "https://ik.imagekit.io/hpapi/draco.jpg"
     },
     "Caracteristicas": {
-      "Pociones": 2,
-      "Defensa": 7,
-      "Hechizos": 4,
-      "Nivel": 6,
-      "Transformaciones": 1,
+      "Pociones": 5,
+      "Defensa": 6,
+      "Hechizos": 3,
+      "Nivel": 2,
+      "Transformaciones": 2,
       "Salud": 100
     }
   },
@@ -83,19 +83,19 @@
     "Datos": {
       "Tipo": "Hufflepuff",
       "Nombre": "Cedric Diggory",
-      "Apodo": "Sabio",
-      "FechaNacimiento": "2007-10-30T00:00:00",
+      "Apodo": "Justiciero",
+      "FechaNacimiento": "2002-09-15T00:00:00",
       "Edad": 0,
       "Gender": "male",
       "Ancestry": "",
       "Imagen": "https://ik.imagekit.io/hpapi/cedric.png"
     },
     "Caracteristicas": {
-      "Pociones": 5,
-      "Defensa": 3,
-      "Hechizos": 7,
-      "Nivel": 4,
-      "Transformaciones": 9,
+      "Pociones": 4,
+      "Defensa": 8,
+      "Hechizos": 3,
+      "Nivel": 10,
+      "Transformaciones": 5,
       "Salud": 100
     }
   },
@@ -103,7 +103,7 @@
     "Datos": {
       "Tipo": "Ravenclaw",
       "Nombre": "Cho Chang",
-      "Apodo": "Audaz",
+      "Apodo": "Sabio",
       "FechaNacimiento": "1979-04-07T00:00:00",
       "Edad": 0,
       "Gender": "female",
@@ -112,8 +112,8 @@
     },
     "Caracteristicas": {
       "Pociones": 2,
-      "Defensa": 7,
-      "Hechizos": 10,
+      "Defensa": 1,
+      "Hechizos": 6,
       "Nivel": 1,
       "Transformaciones": 10,
       "Salud": 100
@@ -123,7 +123,7 @@
     "Datos": {
       "Tipo": "Gryffindor",
       "Nombre": "Neville Longbottom",
-      "Apodo": "Audaz",
+      "Apodo": "Poderoso",
       "FechaNacimiento": "1980-07-30T00:00:00",
       "Edad": 0,
       "Gender": "male",
@@ -131,11 +131,11 @@
       "Imagen": "https://ik.imagekit.io/hpapi/neville.jpg"
     },
     "Caracteristicas": {
-      "Pociones": 5,
-      "Defensa": 2,
-      "Hechizos": 7,
+      "Pociones": 2,
+      "Defensa": 1,
+      "Hechizos": 9,
       "Nivel": 1,
-      "Transformaciones": 10,
+      "Transformaciones": 4,
       "Salud": 100
     }
   },
@@ -143,7 +143,7 @@
     "Datos": {
       "Tipo": "Ravenclaw",
       "Nombre": "Luna Lovegood",
-      "Apodo": "Valiente",
+      "Apodo": "Justiciero",
       "FechaNacimiento": "1981-02-13T00:00:00",
       "Edad": 0,
       "Gender": "female",
@@ -151,11 +151,11 @@
       "Imagen": "https://ik.imagekit.io/hpapi/luna.jpg"
     },
     "Caracteristicas": {
-      "Pociones": 5,
+      "Pociones": 3,
       "Defensa": 1,
       "Hechizos": 1,
-      "Nivel": 7,
-      "Transformaciones": 7,
+      "Nivel": 3,
+      "Transformaciones": 1,
       "Salud": 100
     }
   },
@@ -163,7 +163,7 @@
     "Datos": {
       "Tipo": "Gryffindor",
       "Nombre": "Ginny Weasley",
-      "Apodo": "Justiciero",
+      "Apodo": "Valiente",
       "FechaNacimiento": "1981-08-11T00:00:00",
       "Edad": 0,
       "Gender": "female",
@@ -171,11 +171,11 @@
       "Imagen": "https://ik.imagekit.io/hpapi/ginny.jpg"
     },
     "Caracteristicas": {
-      "Pociones": 4,
-      "Defensa": 9,
-      "Hechizos": 10,
-      "Nivel": 3,
-      "Transformaciones": 7,
+      "Pociones": 5,
+      "Defensa": 4,
+      "Hechizos": 9,
+      "Nivel": 4,
+      "Transformaciones": 2,
       "Salud": 100
     }
   },
@@ -183,19 +183,19 @@
     "Datos": {
       "Tipo": "Slytherin",
       "Nombre": "Vincent Crabbe",
-      "Apodo": "Audaz",
-      "FechaNacimiento": "1985-06-07T00:00:00",
+      "Apodo": "Poderoso",
+      "FechaNacimiento": "1985-11-01T00:00:00",
       "Edad": 0,
       "Gender": "male",
       "Ancestry": "pure-blood",
       "Imagen": "https://ik.imagekit.io/hpapi/crabbe.jpg"
     },
     "Caracteristicas": {
-      "Pociones": 4,
-      "Defensa": 10,
-      "Hechizos": 6,
-      "Nivel": 7,
-      "Transformaciones": 7,
+      "Pociones": 2,
+      "Defensa": 3,
+      "Hechizos": 5,
+      "Nivel": 4,
+      "Transformaciones": 8,
       "Salud": 100
     }
   }
