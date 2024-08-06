@@ -1,0 +1,82 @@
+[
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Ginny Weasley",
+      "Apodo": "Valiente",
+      "FechaNacimiento": "1981-08-11T00:00:00",
+      "Edad": 0,
+      "Gender": "female",
+      "Ancestry": "pure-blood",
+      "Imagen": "https://ik.imagekit.io/hpapi/ginny.jpg"
+    },
+    "Caracteristicas": {
+      "Pociones": 5,
+      "Defensa": 9,
+      "Hechizos": 9,
+      "Nivel": 4,
+      "Transformaciones": 2,
+      "Salud": 93
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Slytherin",
+      "Nombre": "Draco Malfoy",
+      "Apodo": "Audaz",
+      "FechaNacimiento": "1980-06-05T00:00:00",
+      "Edad": 0,
+      "Gender": "male",
+      "Ancestry": "pure-blood",
+      "Imagen": "https://ik.imagekit.io/hpapi/draco.jpg"
+    },
+    "Caracteristicas": {
+      "Pociones": 5,
+      "Defensa": 11,
+      "Hechizos": 3,
+      "Nivel": 2,
+      "Transformaciones": 2,
+      "Salud": 42
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Ravenclaw",
+      "Nombre": "Cho Chang",
+      "Apodo": "Sabio",
+      "FechaNacimiento": "1979-04-07T00:00:00",
+      "Edad": 0,
+      "Gender": "female",
+      "Ancestry": "",
+      "Imagen": "https://ik.imagekit.io/hpapi/cho.jpg"
+    },
+    "Caracteristicas": {
+      "Pociones": 2,
+      "Defensa": 6,
+      "Hechizos": 6,
+      "Nivel": 1,
+      "Transformaciones": 10,
+      "Salud": 12
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Hermione Granger",
+      "Apodo": "Sabio",
+      "FechaNacimiento": "1979-09-19T00:00:00",
+      "Edad": 0,
+      "Gender": "female",
+      "Ancestry": "muggleborn",
+      "Imagen": "https://ik.imagekit.io/hpapi/hermione.jpeg"
+    },
+    "Caracteristicas": {
+      "Pociones": 5,
+      "Defensa": 7,
+      "Hechizos": 7,
+      "Nivel": 9,
+      "Transformaciones": 4,
+      "Salud": 104
+    }
+  }
+]

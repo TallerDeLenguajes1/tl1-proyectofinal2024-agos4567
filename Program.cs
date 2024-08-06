@@ -8,38 +8,26 @@ namespace ProyectoFinal
 {
     class Program
     {
-        static async Task Main(string[] args)
+        private const string ArchivoPersonajes = "personajes.json";
+        private const string ArchivoGanadores = "historial.json";
+       static async Task Main(string[] args)
         {
-            // Obtener la lista de personajes desde la API
-            List<Character> personajesApi = await FabricaDePersonajes.ObtenerPersonajesDesdeApi();
-
-            // Convertir los personajes de la API a objetos Personaje
-            List<EspacioPersonaje.Personaje> personajes = FabricaDePersonajes.ConvertirAReturnPersonajes(personajesApi);
-
-            // Mostrar los personajes (opcional)
-            Console.WriteLine("Personajes creados:");
-            MostrarPersonajes(personajes);
-
-            // Guardar personajes en un archivo JSON
-            string rutaArchivo = "personajes.json";
-            PersonajesJson.GuardarPersonajes(personajes, rutaArchivo);
-
-            // Verificar si el archivo fue creado y leer los personajes del archivo
-            if (PersonajesJson.ExisteArchivo(rutaArchivo))
+            // Cargar personajes desde el archivo o la API
+            List<Personaje> personajes;
+            if (PersonajesJson.ExisteArchivo(ArchivoPersonajes))
             {
-                List<Personaje> personajesLeidos = PersonajesJson.LeerPersonajes(rutaArchivo);
-                Console.WriteLine("Personajes leídos del archivo:");
-                MostrarPersonajes(personajesLeidos);
+                personajes = PersonajesJson.LeerPersonajes(ArchivoPersonajes);
             }
             else
             {
-                Console.WriteLine("No se encontró el archivo de personajes.");
+                List<Character> personajesApi = await FabricaDePersonajes.ObtenerPersonajesDesdeApi();
+                personajes = FabricaDePersonajes.ConvertirAReturnPersonajes(personajesApi);
+                PersonajesJson.GuardarPersonajes(personajes, ArchivoPersonajes);
             }
 
-            // Verificar que haya al menos dos personajes para realizar un combate
+            // Verificar si hay suficientes personajes para combatir
             if (personajes.Count >= 2)
             {
-                // Seleccionar dos personajes aleatorios que no sean el mismo
                 Random random = new Random();
                 Personaje personaje1 = personajes[random.Next(personajes.Count)];
                 Personaje personaje2;
@@ -51,7 +39,14 @@ namespace ProyectoFinal
 
                 // Iniciar el combate
                 Combate combate = new Combate(personaje1, personaje2);
-                combate.IniciarCombate();
+                Personaje ganador = combate.IniciarCombate();
+
+                // Guardar el ganador en el historial
+                if (ganador != null)
+                {
+                    HistorialJson.GuardarGanador(ganador, "historial.json");
+                    Console.WriteLine($"El ganador {ganador.Datos.Nombre} ha sido guardado en el historial.");
+                }
             }
             else
             {

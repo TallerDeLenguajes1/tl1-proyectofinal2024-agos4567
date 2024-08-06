@@ -8,16 +8,27 @@ namespace ProyectoFinal
 {
     public class Gameplay
     {
+        
+        private const string ArchivoPersonajes = "personajes.json";
+        private const string ArchivoGanadores = "ganadores.json";
+
         public static async Task IniciarJuego()
         {
-            // Obtener la lista de personajes desde la API
-            List<Character> personajesApi = await FabricaDePersonajes.ObtenerPersonajesDesdeApi();
-
-            // Convertir los personajes de la API a objetos Personaje
-            List<Personaje> personajes = FabricaDePersonajes.ConvertirAReturnPersonajes(personajesApi);
+            // Cargar personajes desde el archivo o la API
+            List<Personaje> personajes;
+            if (PersonajesJson.ExisteArchivo(ArchivoPersonajes))
+            {
+                personajes = PersonajesJson.LeerPersonajes(ArchivoPersonajes);
+            }
+            else
+            {
+                List<Character> personajesApi = await FabricaDePersonajes.ObtenerPersonajesDesdeApi();
+                personajes = FabricaDePersonajes.ConvertirAReturnPersonajes(personajesApi);
+                PersonajesJson.GuardarPersonajes(personajes, ArchivoPersonajes);
+            }
 
             // Mostrar los personajes
-            Console.WriteLine("Personajes creados:");
+            Console.WriteLine("Personajes disponibles:");
             MostrarPersonajes(personajes);
 
             // Verificar que hay al menos 2 personajes para el combate
@@ -39,7 +50,18 @@ namespace ProyectoFinal
                 Personaje ganador = combate.IniciarCombate();
 
                 // Mostrar los detalles del ganador
-                Console.WriteLine($"Ganador: {ganador.Datos.Nombre}");
+                if (ganador != null)
+                {
+                    Console.WriteLine($"Ganador: {ganador.Datos.Nombre}");
+
+                    // Guardar el ganador en el historial
+                    HistorialJson.GuardarGanador(ganador, ArchivoGanadores);
+                    Console.WriteLine($"El ganador ha sido guardado en el historial.");
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo determinar un ganador.");
+                }
             }
             else
             {
