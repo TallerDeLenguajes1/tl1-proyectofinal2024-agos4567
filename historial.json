@@ -138,5 +138,145 @@
       "Transformaciones": 2,
       "Salud": 38
     }
+  },
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Ginny Weasley",
+      "Apodo": "Valiente",
+      "FechaNacimiento": "1981-08-11T00:00:00",
+      "Edad": 0,
+      "Gender": "female",
+      "Ancestry": "pure-blood",
+      "Imagen": "https://ik.imagekit.io/hpapi/ginny.jpg"
+    },
+    "Caracteristicas": {
+      "Pociones": 5,
+      "Defensa": 9,
+      "Hechizos": 9,
+      "Nivel": 4,
+      "Transformaciones": 2,
+      "Salud": 48
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Harry Potter",
+      "Apodo": "Noble",
+      "FechaNacimiento": "1980-07-31T00:00:00",
+      "Edad": 0,
+      "Gender": "male",
+      "Ancestry": "half-blood",
+      "Imagen": "https://ik.imagekit.io/hpapi/harry.jpg"
+    },
+    "Caracteristicas": {
+      "Pociones": 4,
+      "Defensa": 12,
+      "Hechizos": 4,
+      "Nivel": 8,
+      "Transformaciones": 6,
+      "Salud": 56
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Ravenclaw",
+      "Nombre": "Luna Lovegood",
+      "Apodo": "Justiciero",
+      "FechaNacimiento": "1981-02-13T00:00:00",
+      "Edad": 0,
+      "Gender": "female",
+      "Ancestry": "",
+      "Imagen": "https://ik.imagekit.io/hpapi/luna.jpg"
+    },
+    "Caracteristicas": {
+      "Pociones": 3,
+      "Defensa": 6,
+      "Hechizos": 1,
+      "Nivel": 3,
+      "Transformaciones": 1,
+      "Salud": 110
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Slytherin",
+      "Nombre": "Vincent Crabbe",
+      "Apodo": "Poderoso",
+      "FechaNacimiento": "1985-11-01T00:00:00",
+      "Edad": 0,
+      "Gender": "male",
+      "Ancestry": "pure-blood",
+      "Imagen": "https://ik.imagekit.io/hpapi/crabbe.jpg"
+    },
+    "Caracteristicas": {
+      "Pociones": 2,
+      "Defensa": 8,
+      "Hechizos": 5,
+      "Nivel": 4,
+      "Transformaciones": 8,
+      "Salud": 48
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Hermione Granger",
+      "Apodo": "Sabio",
+      "FechaNacimiento": "1979-09-19T00:00:00",
+      "Edad": 0,
+      "Gender": "female",
+      "Ancestry": "muggleborn",
+      "Imagen": "https://ik.imagekit.io/hpapi/hermione.jpeg"
+    },
+    "Caracteristicas": {
+      "Pociones": 5,
+      "Defensa": 7,
+      "Hechizos": 7,
+      "Nivel": 9,
+      "Transformaciones": 4,
+      "Salud": 40
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Hufflepuff",
+      "Nombre": "Cedric Diggory",
+      "Apodo": "Justiciero",
+      "FechaNacimiento": "2002-09-15T00:00:00",
+      "Edad": 0,
+      "Gender": "male",
+      "Ancestry": "",
+      "Imagen": "https://ik.imagekit.io/hpapi/cedric.png"
+    },
+    "Caracteristicas": {
+      "Pociones": 4,
+      "Defensa": 13,
+      "Hechizos": 3,
+      "Nivel": 10,
+      "Transformaciones": 5,
+      "Salud": 52
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Hermione Granger",
+      "Apodo": "Sabio",
+      "FechaNacimiento": "1979-09-19T00:00:00",
+      "Edad": 0,
+      "Gender": "female",
+      "Ancestry": "muggleborn",
+      "Imagen": "https://ik.imagekit.io/hpapi/hermione.jpeg"
+    },
+    "Caracteristicas": {
+      "Pociones": 5,
+      "Defensa": 7,
+      "Hechizos": 7,
+      "Nivel": 9,
+      "Transformaciones": 4,
+      "Salud": 90
+    }
   }
 ]
