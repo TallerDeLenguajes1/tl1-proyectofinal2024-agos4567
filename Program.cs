@@ -12,30 +12,34 @@ namespace ProyectoFinal
         private const string ArchivoHistorial = "historial.json";
 
         static async Task Main(string[] args)
+{
+    List<Personaje> personajes = await Inicializar(); // Captura el valor devuelto por Inicializar
+
+    while (true)
+    {
+        MostrarMenuPrincipal();
+
+        string? opcion = Console.ReadLine();
+        switch (opcion)
         {
-            List<Personaje> personajes = await Inicializar(); // Captura el valor devuelto por Inicializar
-
-            while (true)
-            {
-                MostrarMenuPrincipal();
-
-                string? opcion = Console.ReadLine();
-                switch (opcion)
-                {
-                    case "1":
-                        MostrarPersonajes(personajes);
-                        break;
-                    case "2":
-                        SeleccionarPersonajeYCombatir(personajes);
-                        break;
-                    case "3":
-                        return; // Salir del programa
-                    default:
-                        Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
-                        break;
-                }
-            }
+            case "1":
+                MostrarPersonajes(personajes);
+                break;
+            case "2":
+                SeleccionarPersonajeYCombatir(personajes);
+                break;
+            case "3":
+                MostrarHistorialGanadores();
+                break;
+            case "4":
+                return; // Salir del programa
+            default:
+                Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                break;
         }
+    }
+}
+
 
         private static async Task<List<Personaje>> Inicializar()
         {
@@ -58,47 +62,43 @@ namespace ProyectoFinal
 private static void MostrarMenuPrincipal()
 {
     Console.Clear();
+    
+    int anchoConsola = Console.WindowWidth;
 
-    // Definir el contenido del título y del menú
-    string titulo = "🌟 MENÚ PRINCIPAL 🌟";
-    string[] menuOptions = new[]
-    {
-        "1. 👤 Mostrar Personajes",
-        "2. ⚔️ Combatir",
-        "3. ❌ Salir"
-    };
+    // Textos para el menú
+    string encabezado = "     🌟 MENÚ PRINCIPAL 🌟";
+    string borde = "═════════════════════════════════════════";
+    string opcion1 = "1. 👤 Mostrar Personajes";
+    string opcion2 = "2. ⚔️ Combatir";
+    string opcion3 = "3. 🏆 Mostrar Historial de Ganadores";
+    string opcion4 = "4. ❌ Salir";
 
-    // Calcular el ancho de la consola
-    int consoleWidth = Console.WindowWidth;
-
-    // Centrar el título del menú
-    string tituloLinea = "═════════════════════════════════════════";
+    // Imprime el borde superior
     Console.ForegroundColor = ConsoleColor.Cyan;
-    Console.WriteLine();
-    Console.WriteLine(tituloLinea.PadLeft((consoleWidth + tituloLinea.Length) / 2));
-    Console.WriteLine(titulo.PadLeft((consoleWidth + titulo.Length) / 2));
-    Console.WriteLine(tituloLinea.PadLeft((consoleWidth + tituloLinea.Length) / 2));
+    Console.WriteLine(CentrarTexto(borde, anchoConsola));
+    Console.WriteLine(CentrarTexto(encabezado, anchoConsola));
+    Console.WriteLine(CentrarTexto(borde, anchoConsola));
     Console.ResetColor();
 
-    // Recuadro para las opciones del menú
-    string frameTop = "╔═════════════════════════════════════════╗";
-    string frameBottom = "╚═════════════════════════════════════════╝";
-    string framePadding = "║";
-    int frameWidth = frameTop.Length;
-
-    // Imprimir el recuadro centrado
+    // Imprime las opciones con borde inferior
     Console.ForegroundColor = ConsoleColor.DarkGreen;
-    Console.WriteLine();
-    Console.WriteLine(frameTop.PadLeft((consoleWidth + frameWidth) / 2));
-    foreach (var option in menuOptions)
-    {
-        Console.WriteLine($"{framePadding} {option.PadRight(frameWidth - 4)}{framePadding}".PadLeft((consoleWidth + frameWidth) / 2));
-    }
-    Console.WriteLine($"{framePadding}{" ".PadRight(frameWidth - 4)}{framePadding}".PadLeft((consoleWidth + frameWidth) / 2)); // Espacio adicional al final
-    Console.WriteLine(frameBottom.PadLeft((consoleWidth + frameWidth) / 2));
+    Console.WriteLine(CentrarTexto(opcion1, anchoConsola));
+    Console.WriteLine(); // Espacio
+    Console.WriteLine(CentrarTexto(opcion2, anchoConsola));
+    Console.WriteLine(); // Espacio
+    Console.WriteLine(CentrarTexto(opcion3, anchoConsola));
+    Console.WriteLine(); // Espacio
+    Console.WriteLine(CentrarTexto(opcion4, anchoConsola));
+    Console.WriteLine(CentrarTexto(borde, anchoConsola));
     Console.ResetColor();
-
+    
     Console.Write("Seleccione una opción: ");
+}
+
+private static string CentrarTexto(string texto, int ancho)
+{
+    int padding = (ancho - texto.Length) / 2;
+    return new string(' ', padding) + texto + new string(' ', padding);
 }
 
 
@@ -137,7 +137,7 @@ private static void SeleccionarPersonajeYCombatir(List<Personaje> personajes)
     Console.Clear();
     Console.ForegroundColor = ConsoleColor.Magenta;
     Console.WriteLine("═════════════════════════════════════════");
-    Console.WriteLine("       🔥 ¡SELECCIONA UN PERSONAJE! 🔥");
+    Console.WriteLine("        🏰 ¡SELECCIONA UN PERSONAJE!  🏰");
     Console.WriteLine("═════════════════════════════════════════");
     Console.ResetColor();
 
@@ -154,7 +154,9 @@ private static void SeleccionarPersonajeYCombatir(List<Personaje> personajes)
 
         if (personajeOponente != null)
         {
+             Console.Clear();
             MostrarInicioCombate();
+             Console.ReadKey();
 
             Console.WriteLine($"Seleccionaste a {personajeElegido.Datos.Nombre} para combatir.");
             Console.WriteLine($"Tu oponente será {personajeOponente.Datos.Nombre}.");
@@ -187,16 +189,32 @@ private static void SeleccionarPersonajeYCombatir(List<Personaje> personajes)
 }
 
 
- private static void MostrarInicioCombate()
+private static void MostrarInicioCombate()
 {
     Console.Clear();
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("═════════════════════════════════════════");
-    Console.WriteLine("      ⚔️ ¡¡¡¡ COMIENZA EL COMBATE !!!! ⚔️");
-    Console.WriteLine("═════════════════════════════════════════");
+    
+    // Calcular el ancho de la consola
+    int consoleWidth = Console.WindowWidth;
+    
+    // Definir el contenido del banner
+    string textoBanner = "⚔️ ¡¡¡¡ COMIENZA EL COMBATE !!!! ⚔️";
+    int borderLength = consoleWidth;
+    
+    // Crear bordes
+    string borde = new string('=', borderLength);
+    
+    // Centrar el banner
+    string textoCentrado = textoBanner.PadLeft((borderLength + textoBanner.Length) / 2);
+
+    // Mostrar el banner
+    Console.ForegroundColor = ConsoleColor.DarkBlue;
+    Console.WriteLine(borde);
+    Console.WriteLine(textoCentrado);
+    Console.WriteLine(borde);
     Console.ResetColor();
-    Console.WriteLine();
+    Console.WriteLine(); // Espacio adicional después del banner
 }
+
 
 
         private static Personaje ObtenerOponenteAleatorio(Personaje personajeElegido, List<Personaje> personajes)
@@ -211,5 +229,49 @@ private static void SeleccionarPersonajeYCombatir(List<Personaje> personajes)
             }
             return null; // Aquí puedes manejar el caso de null en el llamado a este método
         }
+
+
+       private static void MostrarHistorialGanadores()
+{
+    Console.Clear();
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine("═════════════════════════════════════════");
+    Console.WriteLine("     🏆 RANKING HISTÓRICO DE GANADORES 🏆");
+    Console.WriteLine("═════════════════════════════════════════");
+    Console.ResetColor();
+    
+    List<Personaje> ganadores = HistorialJson.LeerGanadores("historial.json");
+    
+    if (ganadores.Count > 0)
+    {     
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine("╔═════════════════════════════════════════╗");
+        Console.WriteLine("║   GANADOR(S) ANTERIOR(ES)               ║");
+        Console.WriteLine("╚═════════════════════════════════════════╝");
+        Console.ResetColor();
+        
+        foreach (var ganador in ganadores)
+        {   
+            Console.WriteLine($"Nombre: {ganador.Datos.Nombre}");
+            Console.WriteLine($"Casa: {ganador.Datos.Tipo}");
+            Console.WriteLine($"Apodo: {ganador.Datos.Apodo}");
+            // Console.WriteLine($"Fecha de Nacimiento: {ganador.Datos.FechaNacimiento:dd-MM-yyyy}");
+            // Console.WriteLine($"Género: {ganador.Datos.Gender}");
+            // Console.WriteLine($"Ancestry: {ganador.Datos.Ancestry}");
+            // Console.WriteLine($"Imagen: {ganador.Datos.Imagen}");
+            Console.WriteLine();
+        }
+    }
+    else
+    {
+        Console.WriteLine("No hay ganadores registrados.");
+    }
+    
+    Console.WriteLine("Presione una tecla para volver al menú principal.");
+    Console.ReadKey();
+}
+
+
+
     }
 }
