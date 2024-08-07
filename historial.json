@@ -418,5 +418,85 @@
       "Transformaciones": 5,
       "Salud": 17
     }
+  },
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Harry Potter",
+      "Apodo": "Noble",
+      "FechaNacimiento": "1980-07-31T00:00:00",
+      "Edad": 0,
+      "Gender": "male",
+      "Ancestry": "half-blood",
+      "Imagen": "https://ik.imagekit.io/hpapi/harry.jpg"
+    },
+    "Caracteristicas": {
+      "Pociones": 4,
+      "Defensa": 12,
+      "Hechizos": 4,
+      "Nivel": 8,
+      "Transformaciones": 6,
+      "Salud": 98
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Harry Potter",
+      "Apodo": "Noble",
+      "FechaNacimiento": "1980-07-31T00:00:00",
+      "Edad": 0,
+      "Gender": "male",
+      "Ancestry": "half-blood",
+      "Imagen": "https://ik.imagekit.io/hpapi/harry.jpg"
+    },
+    "Caracteristicas": {
+      "Pociones": 4,
+      "Defensa": 12,
+      "Hechizos": 4,
+      "Nivel": 8,
+      "Transformaciones": 6,
+      "Salud": 92
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Harry Potter",
+      "Apodo": "Noble",
+      "FechaNacimiento": "1980-07-31T00:00:00",
+      "Edad": 0,
+      "Gender": "male",
+      "Ancestry": "half-blood",
+      "Imagen": "https://ik.imagekit.io/hpapi/harry.jpg"
+    },
+    "Caracteristicas": {
+      "Pociones": 4,
+      "Defensa": 17,
+      "Hechizos": 4,
+      "Nivel": 8,
+      "Transformaciones": 6,
+      "Salud": 88
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Harry Potter",
+      "Apodo": "Noble",
+      "FechaNacimiento": "1980-07-31T00:00:00",
+      "Edad": 0,
+      "Gender": "male",
+      "Ancestry": "half-blood",
+      "Imagen": "https://ik.imagekit.io/hpapi/harry.jpg"
+    },
+    "Caracteristicas": {
+      "Pociones": 4,
+      "Defensa": 12,
+      "Hechizos": 4,
+      "Nivel": 8,
+      "Transformaciones": 6,
+      "Salud": 92
+    }
   }
 ]
