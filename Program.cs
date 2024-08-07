@@ -200,7 +200,11 @@ private static void MostrarMensajeVictoria(Personaje personajeGanador)
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("═════════════════════════════════════════");
     Console.WriteLine($"🎉 ¡{personajeGanador.Datos.Nombre} HA GANADO LA BATALLA! 🎉");
+        Console.WriteLine($"Casa: {personajeGanador.Datos.Tipo}");
+        Console.WriteLine($"Apodo: {personajeGanador.Datos.Apodo}");
+        // Console.WriteLine($"Fecha de Nacimiento: {personajeGanador.Datos.FechaNacimiento:dd-MM-yyyy}");
     Console.WriteLine($"👊 {personajeGanador.Datos.Nombre} se prepara para la siguiente batalla.");
+     
     Console.WriteLine("═════════════════════════════════════════");
     Console.ResetColor();
     Console.WriteLine("Presione una tecla para continuar.");

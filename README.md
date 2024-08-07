@@ -1,6 +1,5 @@
 
 # Descripcion del Proyecto
-Juego de rol con tematica de Harry Potter, en el que tengo la opcion de elegir un personaje de la lista y obtener un openete aleatorio de la misma.
 
 
 ### Mecanica del Juego
