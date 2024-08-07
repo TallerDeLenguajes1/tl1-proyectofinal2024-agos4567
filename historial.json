@@ -118,5 +118,25 @@
       "Transformaciones": 4,
       "Salud": 102
     }
+  },
+  {
+    "Datos": {
+      "Tipo": "Gryffindor",
+      "Nombre": "Ginny Weasley",
+      "Apodo": "Valiente",
+      "FechaNacimiento": "1981-08-11T00:00:00",
+      "Edad": 0,
+      "Gender": "female",
+      "Ancestry": "pure-blood",
+      "Imagen": "https://ik.imagekit.io/hpapi/ginny.jpg"
+    },
+    "Caracteristicas": {
+      "Pociones": 5,
+      "Defensa": 9,
+      "Hechizos": 9,
+      "Nivel": 4,
+      "Transformaciones": 2,
+      "Salud": 38
+    }
   }
 ]

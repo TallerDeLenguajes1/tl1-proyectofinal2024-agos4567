@@ -146,7 +146,7 @@ private static async Task<List<Personaje>> Inicializar()
     {
         return posiblesOponentes[random.Next(posiblesOponentes.Count)];
     }
-    return null; // Aquí puedes manejar el caso de null en el llamado a este método
+    return null; //  manejar el caso de null en el llamado a este método
 }
 
     }
