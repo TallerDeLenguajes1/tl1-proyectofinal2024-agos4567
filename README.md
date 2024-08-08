@@ -9,10 +9,11 @@ Puedo visualizar la lista completa con la caracteristicas y datos de cada person
 #### 2. Jugar
  Para comenzar a jugar presionar 2.
  ##### Seleccionar personaje para comenzar el juego
-  Presionar un numero del 1 al 10, segun el personaje que se quiera elegir.
-
-##### 3. Salir
- Para salir presionar 3.
+  Presionar un numero del 1 al 10, segun el personaje que se quiera elegir de la lista.
+#### 3. Mostrar Historial
+Para mostrar el historial de los ganadores  presionar 3.
+##### 4. Salir
+ Para salir presionar 4.
 
 
 
