@@ -1,6 +1,6 @@
 
 # Descripcion del Proyecto
-Juego de rol 1vs1, que brinda la opcion de elegir 1 personaje de mi lista para pelear el combate, el oponente es seleccionado de manera aleatoria.Si tu personaje vence al adversario puede terminar la partida o continuar el enfrentamiento contra un nuevo oponente aleatorio El juego termina cuando tu personaje es derrotado, y tu objetivo es lograr la mayor cantidad de victorias posibles.
+Juego de rol 1vs1,donde se puede elegir 1 personaje de la lista principal para pelear el combate, el oponente es seleccionado de manera aleatoria.Si tu personaje vence al adversario puede terminar la partida o continuar el enfrentamiento contra un nuevo oponente aleatorio El juego termina cuando tu personaje es derrotado, y tu objetivo es lograr la mayor cantidad de victorias posibles.
 
 
 ### Mecanica del Juego
