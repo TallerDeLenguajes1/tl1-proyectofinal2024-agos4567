@@ -206,11 +206,17 @@ private void RealizarTurno(Personaje atacante, Personaje defensor)
     Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine($"🔥 {atacante.Datos.Nombre} lanza un ataque devastador contra {defensor.Datos.Nombre} causando {MindanoProvocado} de daño! 🔥");
     Console.ResetColor();
+     Console.ReadKey();
 
+    Console.WriteLine();
+    Console.WriteLine($"{defensor.Datos.Nombre} 🛡️ LANZA UN HECHIZO PARA DEFENDERSE! 🔮");
+    Console.ResetColor();
+  
     Console.ForegroundColor = ConsoleColor.Magenta;
-    Console.WriteLine($"💥 Daño infligido: {MindanoProvocado} puntos.");
+    Console.WriteLine($"💥 Daño total infligido: {MindanoProvocado} puntos.");
     Console.WriteLine($"❤️ Salud restante de {defensor.Datos.Nombre}: {defensor.Caracteristicas.Salud}");
     Console.ResetColor();
+    Console.ReadKey();
 
     // Mensaje divertido para la preparación del defensor
     Console.ForegroundColor = ConsoleColor.Green;
