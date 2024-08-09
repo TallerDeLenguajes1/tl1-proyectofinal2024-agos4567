@@ -78,18 +78,7 @@ namespace Fabrica
             return new DateTime(year, month, day);
         }
 
-        // private static EspacioPersonaje.Caracteristicas CrearCaracteristicasAleatorias()
-        // {
-        //     return new EspacioPersonaje.Caracteristicas
-        //     {
-        //         Encantamientos = random.Next(1, 11),
-        //         Salud = 100,
-        //         Defensa = random.Next(1, 5),
-        //         Pociones = random.Next(1, 11),
-        //         Transformaciones = random.Next(1, 11),
-        //         Adivinacion = random.Next(20, 71)
-        //     };
-        // }
+
 
 
     private static EspacioPersonaje.Caracteristicas CrearCaracteristicasAleatorias()

@@ -234,7 +234,7 @@ private static void IniciarCombatePersonaje(Personaje personajeElegido, List<Per
          //creo una nueva instancia de la clase combate para gestionar el combate entre los dos personajes.
         Combate combate = new Combate(personajeElegido, personajeOponente);
 
-        
+
         //invoco al metodo iniciar combate (que me retorna el ganador)
         Personaje ganador = combate.IniciarCombate();
         
@@ -298,26 +298,6 @@ private static void MostrarMensajeDerrota(Personaje personajePerdedor)
     Console.WriteLine("Presione una tecla para salir.");
     Console.ReadKey();
 }
-
-
-// private static void MostrarInicioCombate()
-// {
-//     Console.Clear();
-    
-//     int consoleWidth = Console.WindowWidth;
-//     string textoBanner = "⚔️ ¡¡¡¡ COMIENZA EL COMBATE !!!! ⚔️";
-//     int borderLength = consoleWidth;
-    
-//     string borde = new string('=', borderLength);
-//     string textoCentrado = textoBanner.PadLeft((borderLength + textoBanner.Length) / 2);
-
-//     Console.ForegroundColor = ConsoleColor.DarkBlue;
-//     Console.WriteLine(borde);
-//     Console.WriteLine(textoCentrado);
-//     Console.WriteLine(borde);
-//     Console.ResetColor();
-//     Console.WriteLine(); 
-// }
 
 
 
@@ -386,19 +366,8 @@ private static void MostrarInicioCombate(Personaje personaje1, Personaje persona
 
 
 
-//correccion de este metodo comenado
-// private static Personaje ObtenerOponenteAleatorio(Personaje personajeElegido, List<Personaje> personajes)
-// {
-//     Random random = new Random();
-//     List<Personaje> posiblesOponentes = new List<Personaje>(personajes);
-//     posiblesOponentes.Remove(personajeElegido);
+//obtengo oponente aleatorio
 
-//     if (posiblesOponentes.Count > 0)
-//     {
-//         return posiblesOponentes[random.Next(posiblesOponentes.Count)];
-//     }
-//     return null;
-// }
 private static Personaje ObtenerOponenteAleatorio(Personaje personajeElegido, List<Personaje> personajes)
 {
     // Crea una instancia de la clase Random para generar números aleatorios.
