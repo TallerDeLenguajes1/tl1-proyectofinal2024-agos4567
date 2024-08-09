@@ -3,24 +3,24 @@ using System.Text.Json.Serialization;
 public class Character
 {
     [JsonPropertyName("id")]
-    public string Id { get; set; }
+    public string? Id { get; set; }
 
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [JsonPropertyName("gender")]
-    public string Gender { get; set; }
+    public string? Gender { get; set; }
 
     [JsonPropertyName("house")]
-    public string House { get; set; }
+    public string? House { get; set; }
 
     [JsonPropertyName("dateOfBirth")]
-    public string DateOfBirth { get; set; }
+    public string? DateOfBirth { get; set; }
 
     [JsonPropertyName("ancestry")]
-    public string Ancestry { get; set; }
+    public string? Ancestry { get; set; }
 
   
     [JsonPropertyName("image")]
-    public string Image { get; set; }
+    public string? Image { get; set; }
 }

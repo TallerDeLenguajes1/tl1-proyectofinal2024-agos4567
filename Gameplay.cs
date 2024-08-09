@@ -70,13 +70,14 @@ namespace ProyectoFinal
 
         //     Console.ReadLine();  // Espera a que el usuario presione Enter antes de salir
         // }
-        public static async Task IniciarJuego()
+       public static async Task IniciarJuego()
 {
     // Cargar personajes desde el archivo o la API
     List<Personaje> personajes;
     if (PersonajesJson.ExisteArchivo(ArchivoPersonajes))
     {
-        personajes = PersonajesJson.LeerPersonajes(ArchivoPersonajes);
+        // Asegúrate de que LeerPersonajes nunca devuelva null
+        personajes = PersonajesJson.LeerPersonajes(ArchivoPersonajes) ?? new List<Personaje>();
     }
     else
     {
@@ -91,7 +92,13 @@ namespace ProyectoFinal
 
     // Permitir al jugador elegir un personaje
     Console.WriteLine("Elige tu personaje ingresando el número correspondiente:");
-    int indexElegido = int.Parse(Console.ReadLine());
+    int indexElegido;
+    if (!int.TryParse(Console.ReadLine(), out indexElegido) || indexElegido < 0 || indexElegido >= personajes.Count)
+    {
+        Console.WriteLine("Índice inválido. El juego se detendrá.");
+        return;
+    }
+    
     Personaje personajeElegido = personajes[indexElegido];
 
     // Eliminar el personaje elegido de la lista de personajes para evitar autoenfrentamientos
@@ -141,7 +148,6 @@ namespace ProyectoFinal
     }
     Console.ReadLine();  // Espera a que el usuario presione Enter antes de salir
 }
-
 
         private static void MostrarPersonajes(List<Personaje> personajes)
         {

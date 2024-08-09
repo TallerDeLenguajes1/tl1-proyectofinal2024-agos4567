@@ -39,10 +39,12 @@ namespace ProyectoFinal
             try
             {
                 string json = File.ReadAllText(nombreArchivo);
-                return JsonSerializer.Deserialize<List<Personaje>>(json);
+                // Asegúrate de que la deserialización no devuelva null
+                return JsonSerializer.Deserialize<List<Personaje>>(json) ?? new List<Personaje>();
             }
             catch (Exception ex)
             {
+                // Loguear el error (opcional) y devolver una lista vacía
                 Console.WriteLine($"Error al leer los ganadores: {ex.Message}");
                 return new List<Personaje>();
             }

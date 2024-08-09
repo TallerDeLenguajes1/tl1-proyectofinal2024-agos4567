@@ -4,6 +4,11 @@ using System.Threading.Tasks;
 
 namespace Fabrica
 {
+
+
+
+
+
     public class FabricaDePersonajes
     {
         private static readonly Random random = new Random();

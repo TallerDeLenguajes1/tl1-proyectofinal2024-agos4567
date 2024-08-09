@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections.Generic;
 using EspacioPersonaje;
 using Fabrica;
@@ -17,23 +17,30 @@ namespace ProyectoFinal
             personaje2 = p2;
         }
 
+
+   //maneja el combate en sí mismo, gestionando los turnos entre los personajes y determinando el ganador.
         public Personaje IniciarCombate()
         {
             // Espacio adicional antes del nuevo combate
-            Console.Clear();
-            Console.WriteLine();
+            // Console.Clear();
+            // Console.WriteLine();
 
-            // Anuncio de comienzo del combate
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("══════════════════════════════════════════════");
-            Console.WriteLine("          ¡¡¡¡ COMIENZA EL COMBATE !!!!");
-            Console.WriteLine("══════════════════════════════════════════════\n");
-            Console.ResetColor();
+            // // Anuncio de comienzo del combate
+            // Console.ForegroundColor = ConsoleColor.Cyan;
+            // Console.WriteLine("══════════════════════════════════════════════");
+            // Console.WriteLine("          ¡¡¡¡ COMIENZA EL COMBATE !!!!");
+            // Console.WriteLine("══════════════════════════════════════════════\n");
+            // Console.ResetColor();
 
-            MostrarDetallesPersonajes();
+            // MostrarDetallesPersonajes();
 
+
+
+
+
+         //variable para llevar un control de los turnos
             int turno = 0;
-
+          // Mientras ambos personajes tengan salud, el combate continúa.
             while (personaje1.Caracteristicas.Salud > 0 && personaje2.Caracteristicas.Salud > 0)
             {
                 // Alternar entre ataque y defensa en cada turno
@@ -41,26 +48,44 @@ namespace ProyectoFinal
                 {
                     // Colores alternos para los turnos
                     Console.ForegroundColor = ConsoleColor.Magenta;
+
+
+                      // Realiza un turno de combate donde personaje1 ataca a personaje2. 
                     RealizarTurno(personaje1, personaje2);
                     Console.ResetColor();
+
+
+                     // Si el personaje2 ha quedado sin salud, el combate termina.
                     if (personaje2.Caracteristicas.Salud <= 0) break;
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+
+                // Realiza un turno de combate donde personaje2 ataca a personaje1.
                     RealizarTurno(personaje2, personaje1);
                     Console.ResetColor();
+
+                     // Si el personaje1 ha quedado sin salud, el combate termina.
                     if (personaje1.Caracteristicas.Salud <= 0) break;
                 }
 
+
+                   // se incrementa el número de turno.     
                 turno++;
 
                 // Esperar a que se presione una tecla antes de continuar con el siguiente ataque
                 Console.WriteLine("Presiona cualquier tecla para continuar con el siguiente ataque...");
                 Console.ReadKey();
             }
+            
 
+            // se determina el ganador basado en cuál personaje todavía tiene salud.
+           //operador ternario, para ver quien de los personajes es el ganador
             Personaje ganador = personaje1.Caracteristicas.Salud > 0 ? personaje1 : personaje2;
+
+
+            // Mejora las habilidades del personaje ganador
             MejorarHabilidades(ganador);
 
             // Anuncio del ganador
@@ -92,8 +117,8 @@ namespace ProyectoFinal
             Console.WriteLine();
 
             // VS Separator
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("            VS                       ");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine(" ***************VS************ ");
             Console.ResetColor();
 
             // Espacio adicional después del separador VS
@@ -162,10 +187,12 @@ private void RealizarTurno(Personaje atacante, Personaje defensor)
     int escudo = defensor.Caracteristicas.Defensa * defensor.Caracteristicas.Hechizos;
 
     // Constante de Ajuste
-    const int constanteAjuste = 500;
+    const int constanteAjuste = 700;
 
     // Cálculo del Daño Provocado
     int danoProvocado = (ataque * efectividad - escudo) / constanteAjuste;
+    
+    
 
     // Asegúrate de que el daño sea al menos 2
     int MindanoProvocado = Math.Max(2, danoProvocado);
@@ -174,6 +201,7 @@ private void RealizarTurno(Personaje atacante, Personaje defensor)
     defensor.Caracteristicas.Salud -= MindanoProvocado;
 
     // Mostrar el ataque
+     
     Console.Clear(); // Limpia la pantalla para una presentación más clara
     Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine($"🔥 {atacante.Datos.Nombre} lanza un ataque devastador contra {defensor.Datos.Nombre} causando {MindanoProvocado} de daño! 🔥");
@@ -192,14 +220,23 @@ private void RealizarTurno(Personaje atacante, Personaje defensor)
     // Opcional: Pausa para ver el resultado
     // Console.ReadLine();
 }
-        private void MejorarHabilidades(Personaje ganador)
-        {
-            ganador.Caracteristicas.Salud += 10;
-            ganador.Caracteristicas.Defensa += 5;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"¡{ganador.Datos.Nombre} ha ganado y mejora sus habilidades!");
-            Console.WriteLine($"Salud: {ganador.Caracteristicas.Salud} (+10), Defensa: {ganador.Caracteristicas.Defensa} (+5)\n");
-            Console.ResetColor();
-        }
+
+
+
+
+    private void MejorarHabilidades(Personaje ganador){
+                    
+     ganador.Caracteristicas.Salud += 10;
+      ganador.Caracteristicas.Defensa += 5;
+     Console.ForegroundColor = ConsoleColor.Green;
+     Console.WriteLine($"¡{ganador.Datos.Nombre} ha ganado y mejora sus habilidades!");
+     Console.WriteLine($"Salud: {ganador.Caracteristicas.Salud} (+10), Defensa: {ganador.Caracteristicas.Defensa} (+5)\n");
+     Console.ResetColor();
+     }
+
+
+
+
+
     }
 }

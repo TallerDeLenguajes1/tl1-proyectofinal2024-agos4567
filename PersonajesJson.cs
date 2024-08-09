@@ -35,12 +35,13 @@ public static class PersonajesJson
         try
         {
             string json = File.ReadAllText(nombreArchivo);
-            return JsonSerializer.Deserialize<List<Personaje>>(json);
+            // Asegurarse de que la deserialización no devuelva null
+            return JsonSerializer.Deserialize<List<Personaje>>(json) ?? new List<Personaje>();
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error al leer los personajes: {ex.Message}");
-            return new List<Personaje>();
+            return new List<Personaje>(); // Devuelve una lista vacía en caso de error
         }
     }
 }
