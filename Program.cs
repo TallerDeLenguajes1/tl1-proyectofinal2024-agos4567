@@ -8,11 +8,17 @@ namespace ProyectoFinal
 {
     class Program
     {
+
+        //almacenan el nombre del archivo JSON donde se guardan y leen los datos de los personajes
         private const string ArchivoPersonajes = "personajes.json";
+
+         //almacenan el nombre del archivo JSON que contiene el historial de los ganadores de las batllas
         private const string ArchivoHistorial = "historial.json";
 
        static async Task Main(string[] args){
 
+
+    //
     List<Personaje> personajes = await Inicializar();
     bool continuar = true;
 
@@ -52,6 +58,7 @@ namespace ProyectoFinal
 
 
 
+//se encarga de obtener una lista de personajes de dos maneras distintias dependiendo si existe o no un archivo local que contiene los datos de los persoanjes.
 
 private static async Task<List<Personaje>> Inicializar()
 {
@@ -91,7 +98,7 @@ private static void MostrarMenuPrincipal()
     
     int anchoConsola = Console.WindowWidth;
 
-    string encabezado = "     🌟 MENÚ PRINCIPAL 🌟";
+    string encabezado = "     🌟 M E N Ú    P R I N C I P A L 🌟";
     string borde = "═════════════════════════════════════════";
     string opcion1 = "1. 🧙‍♂️ Mostrar Personajes";
     string opcion2 = "2. ⚔️ Combatir";
@@ -104,7 +111,7 @@ private static void MostrarMenuPrincipal()
     Console.WriteLine(CentrarTexto(borde, anchoConsola));
     Console.ResetColor();
 
-    Console.ForegroundColor = ConsoleColor.Green;
+    Console.ForegroundColor = ConsoleColor.DarkGreen;
     Console.WriteLine(CentrarTexto(opcion1, anchoConsola));
     Console.WriteLine(); 
     Console.WriteLine(CentrarTexto(opcion2, anchoConsola));
@@ -176,7 +183,7 @@ private static void SeleccionarPersonajeYCombatir(List<Personaje> personajes)
     Console.Clear();
     Console.ForegroundColor = ConsoleColor.DarkGreen;
     Console.WriteLine("═════════════════════════════════════════");
-    Console.WriteLine("        🏰 ¡SELECCIONA UN PERSONAJE!  🏰");
+    Console.WriteLine("        🏰 ¡SELECCIONA UN PERSONAJE! 🏰");
     Console.WriteLine("═════════════════════════════════════════");
     Console.ResetColor();
 
@@ -185,6 +192,7 @@ private static void SeleccionarPersonajeYCombatir(List<Personaje> personajes)
     for (int i = 0; i < personajes.Count; i++)
     {
         Console.WriteLine($"{i + 1}. {personajes[i].Datos.Nombre}");
+        Console.WriteLine();
     }
 
     Console.Write("Ingrese el número del personaje: ");
@@ -215,6 +223,7 @@ private static void SeleccionarPersonajeYCombatir(List<Personaje> personajes)
 private static void IniciarCombatePersonaje(Personaje personajeElegido, List<Personaje> personajes)
 {
      // Mientras el personaje elegido tenga salud, se continúa buscando oponentes y combatiendo.
+     //asegura que solo los personajes "vivos" participen en combates. 
     while (personajeElegido.Caracteristicas.Salud > 0)
     {
 
@@ -268,6 +277,10 @@ private static void IniciarCombatePersonaje(Personaje personajeElegido, List<Per
         HistorialJson.GuardarGanador(ganador, ArchivoHistorial);
     }
 }
+
+
+
+
 
 private static void MostrarMensajeVictoria(Personaje personajeGanador)
 {

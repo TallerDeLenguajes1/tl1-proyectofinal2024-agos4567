@@ -12,12 +12,16 @@ namespace Fabrica
     public class FabricaDePersonajes
     {
         private static readonly Random random = new Random();
+        //instancia de la clase potterapi que se utiliza para interactuar con la api
         private static readonly PotterApi potterApi = new PotterApi();
 
         // Método para obtener los primeros 10 personajes desde la API
+
+        //agregar control para que no me reciba nada vacio
         public static async Task<List<Character>> ObtenerPersonajesDesdeApi()
         {
             string url = "https://hp-api.onrender.com/api/characters/students";
+
             List<Character> personajesApi = await potterApi.ObtenerPersonajesAsync(url);
 
             // Obtener los primeros 10 personajes
@@ -29,7 +33,7 @@ namespace Fabrica
                 if (string.IsNullOrEmpty(personaje.DateOfBirth))
                 {
                     personaje.DateOfBirth = ObtenerFechaAleatoria().ToString("dd-MM-yyyy");
-                }
+                }//agregar
             }
 
             return primeros10Personajes;
@@ -41,15 +45,20 @@ namespace Fabrica
 
         public static List<EspacioPersonaje.Personaje> ConvertirAReturnPersonajes(List<Character> characterPersonajes)
         {
+            //crea una lista para almacenar los personajes convetidos.
             var personajes = new List<EspacioPersonaje.Personaje>();
 
             foreach (var p in characterPersonajes)
             {
-                if (!DateTime.TryParse(p.DateOfBirth, out DateTime fechaNacimiento))
+                //intenta convertir la fecha de nacimiento de algun personaje desde una cadena de texto
+                 if (!DateTime.TryParse(p.DateOfBirth, out DateTime fechaNacimiento))
                 {
+                    //si la conversion falla asigna DateTime.MinValue
                     fechaNacimiento = DateTime.MinValue;
                 }
+                
 
+                //creo un objeto de datos con la informacion del personaje
                 var datos = new EspacioPersonaje.Datos
                 {
                     Tipo = p.House,
@@ -60,9 +69,11 @@ namespace Fabrica
                     Ancestry = p.Ancestry,
                     Imagen = p.Image
                 };
-
+               //genero las caracteristicas aleatorias, con las que voy a pelear.
                 var caracteristicas = CrearCaracteristicasAleatorias();
 
+
+//creo un nuevo objeto personaje usando los datos y las caracteristicas generadas y lo agrega a la lista.
                 personajes.Add(new EspacioPersonaje.Personaje(datos, caracteristicas));
             }
 

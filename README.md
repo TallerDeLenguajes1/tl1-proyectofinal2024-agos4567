@@ -1,6 +1,6 @@
 
 # Descripcion del Proyecto
-Juego de rol 1vs1,donde se puede elegir 1 personaje de la lista principal para pelear el combate, el oponente es seleccionado de manera aleatoria.Si tu personaje vence al adversario puede terminar la partida o continuar el enfrentamiento contra un nuevo oponente aleatorio El juego termina cuando tu personaje es derrotado, y tu objetivo es lograr la mayor cantidad de victorias posibles.
+Juego de rol 1vs1 con tematica de Harry Potter,donde se puede elegir 1 personaje de la lista principal para pelear el combate, el oponente es seleccionado de manera aleatoria.Si tu personaje vence al adversario puede terminar la partida o continuar el enfrentamiento contra un nuevo oponente aleatorio El juego termina cuando tu personaje es derrotado, y tu objetivo es lograr la mayor cantidad de victorias posibles.
 
 
 ### Mecanica del Juego
@@ -20,7 +20,10 @@ Salir del menu.
 
 
 ### Recursos utilizados
-Api utilizada en el proyecto, se implemento para los respectivos nombres y datos de los personajes.
+Esta api me proporciona una extensa lista de personajes de Harry Potter, sus casas, fechas de nacimiento, ascendencia y genero respectivo, asi como tambien una imagen que corresponde a cada estudiante de Hogwarts.
  HPApi: https://hp-api.onrender.com/
 
+
+#####Recomendaciones adicionales:
+Se sugiere ejecutar el código en la consola de C# para visualizar correctamente los emojis.
 
