@@ -24,6 +24,6 @@ Esta api me proporciona una extensa lista de personajes de Harry Potter, sus cas
  HPApi: https://hp-api.onrender.com/
 
 
-#####Recomendaciones adicionales:
+####Recomendaciones adicionales:
 Se sugiere ejecutar el código en la consola de C# para visualizar correctamente los emojis.
 
