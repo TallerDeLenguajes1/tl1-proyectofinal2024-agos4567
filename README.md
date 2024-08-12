@@ -23,7 +23,6 @@ Salir del menu.
 Esta api me proporciona una extensa lista de personajes de Harry Potter, sus casas, fechas de nacimiento, ascendencia y genero respectivo, asi como tambien una imagen que corresponde a cada estudiante de Hogwarts.
  HPApi: https://hp-api.onrender.com/
 
-
-####Recomendaciones adicionales:
+#### Recomendaciones adicionales:
 Se sugiere ejecutar el código en la consola de C# para visualizar correctamente los emojis.
 
