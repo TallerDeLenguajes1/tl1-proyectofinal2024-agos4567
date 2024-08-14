@@ -17,13 +17,18 @@ namespace Fabrica
 
         // Método para obtener los primeros 10 personajes desde la API
 
-        //agregar control para que no me reciba nada vacio
+        //agrego control 
+        
         public static async Task<List<Character>> ObtenerPersonajesDesdeApi()
         {
             string url = "https://hp-api.onrender.com/api/characters/students";
 
             List<Character> personajesApi = await potterApi.ObtenerPersonajesAsync(url);
-
+              // Verificar si la lista es nula o está vacía
+                    if (personajesApi == null || !personajesApi.Any())
+                    {
+                        throw new InvalidOperationException("La lista de personajes obtenida desde la API es nula o está vacía.");
+                    }
             // Obtener los primeros 10 personajes
             var primeros10Personajes = personajesApi.Take(10).ToList();
 
