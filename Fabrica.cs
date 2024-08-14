@@ -18,7 +18,7 @@ namespace Fabrica
         // Método para obtener los primeros 10 personajes desde la API
 
         //agrego control 
-        
+
         public static async Task<List<Character>> ObtenerPersonajesDesdeApi()
         {
             string url = "https://hp-api.onrender.com/api/characters/students";
@@ -27,7 +27,7 @@ namespace Fabrica
               // Verificar si la lista es nula o está vacía
                     if (personajesApi == null || !personajesApi.Any())
                     {
-                        throw new InvalidOperationException("La lista de personajes obtenida desde la API es nula o está vacía.");
+                        throw new InvalidOperationException("La lista de personajes obtenida desde la API es nula o esta vacia.");
                     }
             // Obtener los primeros 10 personajes
             var primeros10Personajes = personajesApi.Take(10).ToList();
@@ -45,8 +45,8 @@ namespace Fabrica
         }
 
 
-        // Método para convertir personajes de la API a objetos Personaje
-       //
+        // convierto personajes de la API a objetos Personaje
+     
 
         public static List<EspacioPersonaje.Personaje> ConvertirAReturnPersonajes(List<Character> characterPersonajes)
         {
@@ -78,7 +78,7 @@ namespace Fabrica
                 var caracteristicas = CrearCaracteristicasAleatorias();
 
 
-//creo un nuevo objeto personaje usando los datos y las caracteristicas generadas y lo agrega a la lista.
+             //creo un nuevo objeto personaje usando los datos y las caracteristicas generadas y lo agrega a la lista.
                 personajes.Add(new EspacioPersonaje.Personaje(datos, caracteristicas));
             }
 
