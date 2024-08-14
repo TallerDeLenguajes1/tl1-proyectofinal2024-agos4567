@@ -14,7 +14,7 @@ namespace Fabrica
         {
             try
             {
-                // Realiza una solicitud HTTP a la URL proporcionada y deserializa la respuesta JSON en una lista de objetos Character.
+                // se realiza una solicitud HTTP a la URL proporcionada y deserializa la respuesta JSON en una lista de objetos Character.
                 var response = await client.GetStringAsync(url);
 
                 // Deserializar la respuesta JSON a una lista de objetos Character
