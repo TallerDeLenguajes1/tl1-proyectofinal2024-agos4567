@@ -11,7 +11,7 @@ Puedo visualizar la lista completa con la caracteristicas y datos de cada person
  Comienza el juego.
  ##### Seleccionar personaje para comenzar el juego
   Presionar un numero del 1 al 10, segun el personaje que se quiera elegir de la lista.
-  ######EN CASO DE GANAR EL JUEGO:
+  ###### EN CASO DE GANAR EL JUEGO:
   *S para continuar jugando
   *Presione cualquier otra tecla para salir.
 #### 3. Mostrar Historial
