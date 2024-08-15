@@ -15,7 +15,7 @@ namespace Fabrica
         //instancia de la clase potterapi que se utiliza para interactuar con la api
         private static readonly PotterApi potterApi = new PotterApi();
 
-        // Método para obtener los primeros 10 personajes desde la API
+        // metodo para obtener los primeros 10 personajes desde la API
 
         //agrego control 
 
